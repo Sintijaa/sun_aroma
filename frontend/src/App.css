@@ -29,19 +29,27 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  /* Darken the image */
+  filter: brightness(50%);
 }
 
 .content {
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background behind text */
   padding: 20px 40px;
   border-radius: 12px;
+  
+  /* Removed background-color for the square */
+  background-color: transparent;
 }
 
 h1 {
-  font-size: 3.5em;
-  color: #fff;
+  font-size: 8em; /* Large text size */
+  color: #e0dcdc;
   margin: 0;
+
+  /* Added text shadow */
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
 }
 
 button {
@@ -51,24 +59,24 @@ button {
   padding: 10px 30px;
   font-size: 1.2em;
   font-weight: 500;
-  background-color: #646cff;
-  color: white;
+  background-color: #646464;
+  color: rgb(240, 233, 233);
   cursor: pointer;
   transition: background-color 0.25s;
 }
 
 button:hover {
-  background-color: #535bf2;
+  background-color: #48494b;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #555353;
   }
 
   h1 {
-    color: #213547;
+    color: #6b7680;
   }
 
   button {
