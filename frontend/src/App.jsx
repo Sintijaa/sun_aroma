@@ -1,16 +1,15 @@
-import { useState } from 'react'
-import './App.css'
+import './App.css';
 import sakuma_bilde from './assets/sakuma_bilde.jpeg';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="background-cover">
-      <img src={sakuma_bilde} alt="Sākuma bilde" />
-      <h1>Sun Aroma</h1>
+    <div className="background">
+      <div className="content">
+        <h1>Sun Aroma</h1>
+        <button>Doties uz veikalu</button>
+      </div>
     </div>
-  )
+  );
 }
 
 export default App;
