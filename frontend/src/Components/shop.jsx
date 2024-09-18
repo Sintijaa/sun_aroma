@@ -12,19 +12,35 @@ function Shop() {
       <div className="image-gallery">
         <div className="image-item">
           <img src={epoksids} alt="Epoksīds" />
-          <p>Epoksīda dekori</p>
+          <div class="container">
+            <button class="button type1">
+            Epoksīda dekori
+            </button>
+          </div>
         </div>
         <div className="image-item">
           <img src={sveces} alt="Sveces" />
-          <p>Sveces</p>
+          <div class="container">
+            <button class="button type1">
+            Sveces
+            </button>
+          </div>
         </div>
         <div className="image-item">
           <img src={vasks} alt="Vasks" />
-          <p>Aromātiskais vasks</p>
+          <div class="container">
+            <button class="button type1">
+            Aromātiskais vasks
+            </button>
+          </div>
         </div>
         <div className="image-item">
           <img src={burti} alt="Burti" />
-          <p>Epoksīda burti</p>
+          <div class="container">
+            <button class="button type1">
+            Epoksīda burti
+            </button>
+          </div>
         </div>
       </div>
     </div>

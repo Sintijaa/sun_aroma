@@ -1,27 +1,37 @@
 h1 {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
   }
   
-  .image-gallery {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* Atstarpes starp bildēm */
-  }
+.image-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Atstarpes starp bildēm */
+}
   
-  .image-item {
-    text-align: center;
-  }
+.image-item {
+  text-align: center;
+}
   
-  .image-item img {
-    width: 200px; /* Vari mainīt, lai bildes būtu lielākas vai mazākas */
-    height: auto;
-    border-radius: 10px; /* Ja vēlies noapaļotus stūrus */
-  }
+.image-item img {
+  width: 220px; /* Vari mainīt, lai bildes būtu lielākas vai mazākas */
+  height: auto;
+  border-radius: 15px; /* Ja vēlies noapaļotus stūrus */
+}
   
-  .image-item p {
-    margin-top: 10px;
-    font-size: 1.4em;
-    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
-  }
-  
+.image-item p {
+  margin-top: 10px;
+  font-size: 1.4em;
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
+}
+
+.button{
+  position: relative;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  font-size: 18px;
+  margin: 1em 0.8em;
+}
+ 

@@ -2,7 +2,6 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -31,7 +30,7 @@ body {
   align-items: center;
   
   /* Darken the image */
-  filter: brightness(50%);
+  filter: brightness(60%);
 }
 
 .content {
@@ -45,7 +44,7 @@ body {
 
 h1 {
   font-size: 8em; /* Large text size */
-  color: #e0dcdc;
+  color: #ffffff;
   margin: 0;
 
   /* Added text shadow */
@@ -64,6 +63,13 @@ button {
   cursor: pointer;
   transition: background-color 0.25s;
 }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* This centers the buttons horizontally */
+}
+
 
 button:hover {
   background-color: #48494b;

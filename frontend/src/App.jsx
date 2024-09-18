@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import Shop from './Components/Shop';  
+import Meistarklase from './Components/Meistarklase';
+
 
 function Home() {
   const navigate = useNavigate();
@@ -11,19 +13,21 @@ function Home() {
       <div className="content">
         <h1>Sun Aroma</h1>
         <button onClick={() => navigate('/shop')}>Doties uz veikalu</button>
+        <button onClick={() => navigate('/meistarklase')}>Meistarklases</button>
+        <button onClick={() => navigate('/piegade')}>Piegāde</button>
       </div>
     </div>
   );
+  
 }
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Define route for the Home component */}
         <Route path="/" element={<Home />} />
-        {/* Define route for the Shop component */}
         <Route path="/shop" element={<Shop />} />
+        <Route path="/meistarklase" element={<Meistarklase />} />
       </Routes>
     </Router>
   );
