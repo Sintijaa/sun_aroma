@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style/Meistarklase.css'; // Make sure the path to your CSS file is correct
+import '../style/Meistarklase.css'; 
 import cilveki from '../assets/cilveki.jpg';
 import darbs from '../assets/darbs.jpg'; 
 import sakums from '../assets/sakums.jpg';
