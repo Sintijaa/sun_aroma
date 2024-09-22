@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../style/Meistarklase.css'; 
 import cilveki from '../assets/cilveki.jpg';
 import darbs from '../assets/darbs.jpg'; 
@@ -8,6 +9,12 @@ import process from '../assets/process.jpg';
 function Meistarklase() {
     return (
       <div className="meistarklase-container">
+        <div className="top-left-button">
+          <Link to="/">
+            <button className="button home-button">Uz sākumu</button>
+          </Link>
+        </div>
+
         <h1>Meistarklases</h1>
         <div className="image-gallery">
           <div className="image-item">

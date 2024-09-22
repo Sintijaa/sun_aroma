@@ -1,12 +1,14 @@
 h1 {
   text-align: center;
   margin-bottom: 20px;
+  
   }
   
 .image-gallery {
   display: flex;
   justify-content: center;
-  gap: 40px; /* Atstarpes starp bildēm */
+  gap: 40px; /* Atstarpe starp bildēm */
+  
 }
   
 .image-item {
@@ -14,9 +16,9 @@ h1 {
 }
   
 .image-item img {
-  width: 220px; /* Vari mainīt, lai bildes būtu lielākas vai mazākas */
+  width: 220px;
   height: auto;
-  border-radius: 15px; /* Ja vēlies noapaļotus stūrus */
+  border-radius: 15px; 
 }
   
 .image-item p {
@@ -35,3 +37,19 @@ h1 {
   margin: 1em 0.8em;
 }
  
+.top-left-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.home-button {
+  background-color: #3b3b3b; 
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
