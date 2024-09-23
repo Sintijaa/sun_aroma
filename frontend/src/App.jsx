@@ -5,6 +5,8 @@ import Shop from './Components/Shop';
 import Meistarklase from './Components/Meistarklase';
 
 
+
+
 function Home() {
   const navigate = useNavigate();
 
@@ -32,5 +34,7 @@ function App() {
     </Router>
   );
 }
+
+
 
 export default App;

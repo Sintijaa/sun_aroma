@@ -5,6 +5,10 @@ import epoksids from '../assets/epoksids.jpg';
 import sveces from '../assets/sveces.jpg';
 import vasks from '../assets/vasks.jpg';
 import burti from '../assets/burti.jpg';
+import ziepes from '../assets/ziepes.jpeg';
+import aromats1 from '../assets/aromats1.jpg';
+import auskari2 from '../assets/auskari2.jpg';
+
 
 function Shop() {
   return (
@@ -49,9 +53,34 @@ function Shop() {
             </div>
           </Link>
         </div>
+        <div className="image-item">
+          <Link to="/ziepes">
+            <img src={ziepes} alt="Ziepes" />
+            <div className="container">
+              <button className="button type1">Ziepes no kazas piena bāzes</button>
+            </div>
+          </Link>
+        </div>
+        <div className="image-item">
+          <Link to="/aromati">
+            <img src={aromats1} alt="aromats1" />
+            <div className="container">
+              <button className="button type1">Mājas un automašīnasa aromāti</button>
+            </div>
+          </Link>
+        </div>
+        <div className="image-item">
+          <Link to="/auskari">
+            <img src={auskari2} alt="auskari2" />
+            <div className="container">
+              <button className="button type1">Rotas no epoksīda sveķiem</button>
+            </div>
+          </Link>
+        </div>
       </div>
     </div>
   );
 }
+
 
 export default Shop;

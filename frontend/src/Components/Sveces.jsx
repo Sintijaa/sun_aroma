@@ -6,6 +6,7 @@ import ametists from '../assets/ametists.jpg';
 
 function Sveces() {
     return (
+      
       <div className="sveces-container">
         <h1>Dizaina sveces</h1>
         <div className="image-gallery">
