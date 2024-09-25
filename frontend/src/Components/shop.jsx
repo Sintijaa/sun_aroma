@@ -15,7 +15,7 @@ function Shop() {
     <div>
       <div className="top-left-button">
         <Link to="/">
-          <button className="button home-button">Uz sākumu</button>
+          <button className="button home-button">Sākums</button>
         </Link>
       </div>
 

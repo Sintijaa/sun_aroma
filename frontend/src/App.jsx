@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-route
 import './App.css';
 import Shop from './Components/Shop';  
 import Meistarklase from './Components/Meistarklase';
+import Sveces from './Components/Sveces';
+import Auskari from './Components/Auskari';
 
 
 
@@ -30,6 +32,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/meistarklase" element={<Meistarklase />} />
+        <Route path="/sveces" element={<Sveces />} />
+        <Route path="/auskari" element={<Auskari />} />
       </Routes>
     </Router>
   );

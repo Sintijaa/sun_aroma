@@ -1,4 +1,4 @@
-.sveces-container {
+.auskari-container {
     text-align: center;
     margin: 20px;
 }
@@ -10,7 +10,7 @@
     gap: 40px;
 }
 
-.svece {
+.auskari-item {
     display: flex;
     align-items: flex-start; /* Teksts sāksies no bildes augšas */
     width: 100%;
@@ -19,7 +19,7 @@
     padding-left: 20px;
 }
 
-.svece-bilde {
+.auskari-bilde {
     width: 50%; /* Samazina bildes platumu, lai būtu vairāk vietas tekstam */
     height: auto;
     border-radius: 10px;
@@ -29,11 +29,11 @@
     margin-right: 20px;
 }
 
-.svece-bilde:hover {
+.auskari-bilde:hover {
     transform: scale(1.05);
 }
 
-.svece-apraksts {
+.auskari-apraksts {
     width: 48%; /* Tekstam lielāka platuma daļa */
     font-size: 1.6em; /* Palielināts teksta izmērs */
     color: #fafafa;
@@ -41,4 +41,20 @@
     margin-top: 0; /* Noņem vertikālo nobīdi, lai sakristu ar bildes augšu */
     margin-left: 100px; /* Pārvieto tekstu vairāk pa labi */
     padding-right: 20px;
+}
+.home-button {
+    position: absolute;
+    top: 20px; /* Augstuma attālums no lapas augšas */
+    left: 20px; /* Attālums no kreisās malas */
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fafafa;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #555; /* Pogas krāsa mainās uz pelēku, kad tā ir hover stāvoklī */
 }
