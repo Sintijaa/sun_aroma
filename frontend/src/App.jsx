@@ -5,6 +5,7 @@ import Shop from './Components/Shop';
 import Meistarklase from './Components/Meistarklase';
 import Sveces from './Components/Sveces';
 import Auskari from './Components/Auskari';
+import Aromati from './Components/Aromati';
 
 
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="/meistarklase" element={<Meistarklase />} />
         <Route path="/sveces" element={<Sveces />} />
         <Route path="/auskari" element={<Auskari />} />
+        <Route path="/aromati" element={<Aromati />} />
       </Routes>
     </Router>
   );

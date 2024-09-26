@@ -1,0 +1,29 @@
+.-container {
+    text-align: center;
+    margin: 20px;
+}
+
+.galerija {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+ .aromats {
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+}
+
+.aromats-bilde {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.aromats-apraksts {
+    margin-top: 10px;
+    font-size: 14px;
+}
