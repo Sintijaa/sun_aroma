@@ -6,13 +6,25 @@ import Meistarklase from './Components/Meistarklase';
 import Sveces from './Components/Sveces';
 import Auskari from './Components/Auskari';
 import Aromati from './Components/Aromati';
+// import ParMums from './Components/ParMums';
 
+
+// const App = () => {
+
+//   const scrollToSection = (sectionId) => {
+//     const section = document.getElementById(sectionId);
+//     if (section) {
+//       section.scrollIntoView({ behavior: 'smooth' });
+//     }
+//   }
 
 
 
 function Home() {
   const navigate = useNavigate();
-
+      // <nav>
+      //   <button onClick={() => scrollToSection('par-mums-section')}>Par Mums</button>
+      // </nav>
   return (
     <div className="background">
       <div className="content">

@@ -7,7 +7,7 @@ import ametists from '../assets/ametists.jpg';
 function Sveces() {
     return (
         <div className="sveces-container">
-         <Link to="/shop" className="home-button">Sākums</Link> {/* Poga uz veikalu */}
+         <Link to="/shop" className="home-button">Sākums</Link> 
 
             <h1>Dizaina sveces</h1>
             <div className="galerija">

@@ -9,7 +9,7 @@ import auskari4 from '../assets/auskari4.jpg';
 function Auskari() {
     return (
         <div className="auskari-container">
-            <Link to="/shop" className="home-button">Sākums</Link> {/* Poga uz veikalu */}
+            <Link to="/shop" className="home-button">Sākums</Link>
 
             <h1>Epoksīda sveķu rotas</h1>
             <div className="galerija">

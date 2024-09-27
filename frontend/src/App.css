@@ -22,14 +22,12 @@ body {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-image: url('./assets/sakuma_bilde.jpeg'); /* Ensure correct path */
+  background-image: url('./assets/sakuma_bilde.jpeg'); 
   background-size: cover;
   background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  /* Darken the image */
   filter: brightness(60%);
 }
 
@@ -37,17 +35,13 @@ body {
   text-align: center;
   padding: 20px 40px;
   border-radius: 12px;
-  
-  /* Removed background-color for the square */
   background-color: transparent;
 }
 
 h1 {
-  font-size: 8em; /* Large text size */
+  font-size: 7em; 
   color: #ffffff;
   margin: 0;
-
-  /* Added text shadow */
   text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
 }
 
@@ -67,7 +61,7 @@ button {
 .content {
   display: flex;
   flex-direction: column;
-  align-items: center; /* This centers the buttons horizontally */
+  align-items: center; 
 }
 
 

@@ -1,0 +1,8 @@
+
+#par-mums-section {
+    padding: 50px;
+    background-color: #f4f4f4;
+    height: 400px; /* Var mainīt pēc vajadzības */
+    scroll-margin-top: 100px; /* Ja vēlies atstarpi no augšas pēc scrolla */
+  }
+  
