@@ -7,7 +7,7 @@ import Piegade from './Components/Piegade';
 import Sveces from './Components/Sveces';
 import Auskari from './Components/Auskari';
 import Aromati from './Components/Aromati';
-import logo from './assets/logo.jpg'; // Pārliecinieties, ka ceļš uz logo ir pareizs
+
 
 
 

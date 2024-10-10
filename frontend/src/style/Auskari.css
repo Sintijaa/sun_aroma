@@ -1,58 +1,96 @@
 .auskari-container {
     text-align: center;
     margin: 20px;
+    background: linear-gradient(to right, #f8f8f8, #e0e0e0); 
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
 }
 
 .galerija {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolonnas vienā rindā */
+    gap: 40px; /* Attālums starp produktiem */
 }
 
 .auskari-item {
+    background-color: white; /* Fona krāsa */
+    padding: 20px; /* Iekšējais attālums */
+    border-radius: 10px; /* Noapaļoti stūri */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Nedaudz ēnas efekts */
+    transition: transform 0.3s ease;
     display: flex;
-    align-items: flex-start; /* Teksts sāksies no bildes augšas */
-    width: 100%;
-    max-width: 1000px;
-    justify-content: flex-start;
-    padding-left: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auskari-item:hover {
+    transform: translateY(-10px); /* Peldošs efekts peldošā stāvoklī */
 }
 
 .auskari-bilde {
-    width: 50%; /* Samazina bildes platumu, lai būtu vairāk vietas tekstam */
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    box-shadow: 5px 5px 10px rgb(85, 85, 85);
-    transition: transform 0.3s ease;
-    margin-right: 20px;
+    width: 100%; /* Attēla platums atbilstoši konteineram */
+    max-width: 400px; /* Palielināts maksimālais platums, lai bildes būtu lielākas */
+    height: auto; /* Saglabā proporcijas */
+    border-radius: 10px; /* Noapaļoti stūri */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Nedaudz ēnas efekts */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px; /* Attālums zem attēla */
 }
 
 .auskari-bilde:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Palielina attēlu peldošā efektā */
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4); /* Tumšāka ēna peldošā efektā */
 }
 
 .auskari-apraksts {
-    width: 48%; /* Tekstam lielāka platuma daļa */
-    font-size: 1.6em; /* Palielināts teksta izmērs */
-    color: #fafafa;
-    text-align: left;
-    margin-top: 0; /* Noņem vertikālo nobīdi, lai sakristu ar bildes augšu */
-    margin-left: 100px; /* Pārvieto tekstu vairāk pa labi */
-    padding-right: 20px;
+    font-size: 1.4em; /* Teksta izmērs */
+    color: #181818; /* Teksta krāsa */
+    text-align: center; /* Teksta centrs */
+    margin-top: 10px; /* Attālums starp attēlu un tekstu */
+    padding: 0 10px; /* iekšējais attālums */
 }
+
+.add-to-cart-button {
+    background-color: #5d5e5d; /* Pogas krāsa */
+    color: white;
+    padding: 12px 20px; /* Iekšējais attālums */
+    border: none;
+    border-radius: 50px; /* Apaļi stūri pogai */
+    cursor: pointer; /* Rādīt, ka pogai var noklikšķināt */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Pāreja efektiem */
+    margin-top: 15px; /* Attālums virs pogas */
+}
+
+.add-to-cart-button:hover {
+    background-color: #4e4d4e; /* Tumšāka krāsa peldošajam efektam */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Ēna peldošajam efektam */
+}
+
+/* Responsivitātei */
+@media (max-width: 900px) {
+    .galerija {
+        grid-template-columns: repeat(2, 1fr); /* 2 produkti rindā uz mazākiem ekrāniem */
+    }
+}
+
+@media (max-width: 600px) {
+    .galerija {
+        grid-template-columns: 1fr; /* 1 produkts rindā uz vēl mazākiem ekrāniem */
+    }
+}
+
 .home-button {
     position: absolute;
     top: 20px; /* Augstuma attālums no lapas augšas */
     left: 20px; /* Attālums no kreisās malas */
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fafafa;
-    text-decoration: none;
-    font-size: 1.2em;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    padding: 10px 20px; /* Iekšējais attālums */
+    background-color: #333; /* Pogas krāsa */
+    color: #fafafa; /* Teksta krāsa pogā */
+    text-decoration: none; /* Noņem apakšsvītru */
+    font-size: 1.2em; /* Teksta izmērs */
+    border-radius: 5px; /* Noapaļoti stūri */
+    transition: background-color 0.3s ease; /* Pāreja efektiem */
 }
 
 .home-button:hover {

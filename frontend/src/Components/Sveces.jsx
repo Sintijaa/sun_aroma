@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import '../style/Sveces.css';
 import kvarcs from '../assets/kvarcs.jpg';
 import ametists from '../assets/ametists.jpg';
 
-
 function Sveces() {
-   
+    const addToCart = (item) => {
+        console.log(`${item} pievienots grozam`);
+    };
 
     return (
         <div className="sveces-container">
@@ -24,6 +25,7 @@ function Sveces() {
                     <p className="svece-apraksts">Sojas vaska svece ar dabīgiem akmeņiem - Ametists</p>
                     <button className="add-to-cart-button" onClick={() => addToCart('Ametists')}>Pievienot grozam</button>
                 </div>
+                {/* Pievieno vēl produktus šeit */}
             </div>
         </div>
     );
