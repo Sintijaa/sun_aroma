@@ -1,20 +1,11 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #d6cfd6;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   margin: 0;
-  font-family: inherit;
   background-color: #c0c0c7;
 }
 
@@ -22,7 +13,7 @@ body {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-image: url('./assets/sakuma_bilde.jpeg'); 
+  background-image: url('./assets/sakuma_bilde.jpeg');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -36,55 +27,181 @@ body {
   padding: 20px 40px;
   border-radius: 12px;
   background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-h1 {
-  font-size: 7em; 
-  color: #222222;
-  margin: 0;
-  text-shadow: 4px 4px 6px rgba(119, 118, 118, 0.8);
+.logo-container {
+  margin-bottom: 30px;
 }
 
-button {
+.logo {
+  font-size: 5em;
+  color: #f3eeee;
+  font-weight: bold;
+  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+  animation: logo-fade-in 2s ease;
+}
+
+@keyframes logo-fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.custom-button {
   margin-top: 20px;
-  border-radius: 8px;
+  border-radius: 25px;
   border: none;
-  padding: 10px 30px;
-  font-size: 1.2em;
-  font-weight: 500;
-  background-color: #888888;
-  color: rgb(5, 5, 5);
+  padding: 15px 40px;
+  font-size: 1.3em;
+  font-weight: 600;
+  background-color: #8a7d7d;
+  color: white;
   cursor: pointer;
-  transition: background-color 0.25s;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.custom-button:hover {
+  background-color: #807f7f;
+  transform: scale(1.1);
+}
+
+.custom-button:active {
+  transform: scale(1);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 3.5em;
+  }
+
+  .custom-button {
+    padding: 12px 30px;
+    font-size: 1.1em;
+  }
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  position: absolute; /* Izmantojam absolūtu pozicionēšanu */
+  top: 20px; /* Attālums no augšas */
+  left: 20px; /* Attālums no kreisās puses */
+  z-index: 1000; /* Pārliecināmies, ka logo ir virs citiem elementiem */
+}
+
+.logo-image {
+  width: 300px; /* Izmērs var mainīties atbilstoši vajadzībām */
+  height: auto; /* Saglabā proporcijas */
+  margin-right: 80px; /* Atstarpe starp logo un tekstu */
+}
+
+.logo {
+  font-size: 5.5em; /* Lielāks nosaukuma izmērs */
+  color: #f3eeee;
+  font-weight: bold;
+  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.custom-button {
+  margin-top: 100px; /* Samazinam attālumu no logo līdz pogām */
+  border-radius: 25px;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.3em;
+  font-weight: 600;
+  background-color: #8a7d7d;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.custom-button:hover {
+  background-color: #807f7f;
+  transform: scale(1.1);
+}
+
+.custom-button:active {
+  transform: scale(1);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px; /* Attālums starp logo un pogām */
+  position: relative;
+}
+
+.logo-image {
+  width: 100px; /* Izmērs var mainīties atbilstoši vajadzībām */
+  height: auto; /* Saglabā proporcijas */
+  margin-right: 20px; /* Atstarpe starp logo un tekstu */
+}
+
+.logo {
+  font-size: 5em; /* Lielāks nosaukuma izmērs */
+  color: #f3eeee;
+  font-weight: bold;
+  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+  margin-bottom: 40px; /* Attālums starp nosaukumu un pogām */
+  padding: 20px; /* Iekšējā atstarpe ap tekstu */
+  background-color: rgba(0, 0, 0, 0.5); /* Tumšs caurspīdīgs fons */
+  border-radius: 10px; /* Noapaļotas malas */
 }
 
 .content {
+  text-align: center;
+  padding: 20px 40px;
+  border-radius: 12px;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
 }
 
-
-button:hover {
-  background-color: #48494b;
+.button-container {
+  display: flex;
+  flex-direction: column; /* Pogas vertikāli */
+  align-items: center; /* Centrējam pogas */
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #555353;
+.custom-button {
+  margin-top: 20px; /* Attālums starp pogām */
+  border-radius: 25px;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.3em;
+  font-weight: 600;
+  background-color: #8a7d7d;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+/* Mobilās versijas stili */
+@media (max-width: 768px) {
+  .logo-image {
+    width: 60px; /* Samazināts izmērs mobilajām ierīcēm */
   }
 
-  h1 {
-    color: #0c0c0c;
+  .logo {
+    font-size: 2.5em; /* Samazināts teksta izmērs mobilajām ierīcēm */
   }
 
-  button {
-    background-color: #161616;
-    color: #213547;
-  }
-
-  button:hover {
-    background-color: #242222;
+  .custom-button {
+    padding: 12px 30px;
+    font-size: 1.1em;
   }
 }
+

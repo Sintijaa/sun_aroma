@@ -1,29 +1,25 @@
+/* Galvenais virsraksts */
 h1 {
   text-align: center;
-  margin-bottom: 20px;
-  
-  }
-  
+  margin-bottom: 50px;
+  font-size: 4em; /* Palielināts fonta izmērs */
+  color: #222222; /* Varat mainīt krāsu pēc izvēles */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Pievienots neliels ēnojums */
+}
+
+
+/* Attēlu galerija */
 .image-gallery {
   display: flex;
   justify-content: center;
   gap: 40px; /* Atstarpe starp bildēm */
-  
-}
-  
-.image-item {
-  text-align: center;
-}
-  
-.image-item {
-  position: relative;
-  display: inline-block;
-  perspective: 1000px;
 }
 
 .image-item {
+  text-align: center;
   position: relative;
   display: inline-block;
+  perspective: 1000px;
   overflow: hidden;
 }
 
@@ -31,7 +27,7 @@ h1 {
   width: 250px;
   height: 250px;
   transition: transform 0.6s ease, box-shadow 0.6s ease;
-  border-radius: 20% 30% 40% 30%; /* Stūri ar dažāda izmēra ieapaļumiem */
+  border-radius: 20% 30% 40% 30%; /* Stūri ar dažāda izmēra ieapaļojumiem */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transform: rotate(0deg); /* Sākotnējā pozīcija */
 }
@@ -41,32 +37,14 @@ h1 {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-.image-item:before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  background: linear-gradient(135deg, rgba(87, 85, 80, 0.4), rgba(168, 162, 164, 0.4));
-  z-index: -1;
-  filter: blur(15px);
-  opacity: 0;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.image-item:hover:before {
-  opacity: 1;
-  transform: rotate(10deg); /* Fona gradienta griešanās */
-}
-
 .image-item p {
   margin-top: 10px;
   font-size: 1.4em;
   text-shadow: 4px 4px 6px rgba(75, 74, 74, 0.8);
 }
 
-.button{
+/* Pogu stils */
+.button {
   position: relative;
   border: none;
   background-color: transparent;
@@ -75,7 +53,7 @@ h1 {
   font-size: 18px;
   margin: 1em 0.8em;
 }
- 
+
 .top-left-button {
   position: absolute;
   top: 10px;
@@ -83,7 +61,7 @@ h1 {
 }
 
 .home-button {
-  background-color: #3b3b3b; 
+  background-color: #3b3b3b;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -92,4 +70,37 @@ h1 {
   border-radius: 5px;
 }
 
+/* Mobilā versija */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+  }
 
+  .image-gallery {
+    display: block; /* Attēli zem viens otra */
+    gap: 20px; /* Mazāka atstarpe */
+    margin: 0 auto;
+  }
+
+  .image-item img {
+    width: 200px; /* Samazinām attēla izmēru mobilajās ierīcēs */
+    height: 200px;
+    border-radius: 20% 25% 30% 25%; /* Saglabājam ieapaļojumu, bet nedaudz samazinām */
+  }
+
+  .image-item p {
+    font-size: 1.2em; /* Mazāks teksta izmērs */
+    margin-top: 8px;
+  }
+
+  .button {
+    font-size: 16px;
+    margin: 0.8em 0.5em;
+  }
+
+  .home-button {
+    padding: 8px 15px; /* Mazāks pogas izmērs mobilajā versijā */
+    font-size: 14px;
+  }
+}

@@ -9,10 +9,10 @@ import ziepes from '../assets/ziepes.jpeg';
 import aromats1 from '../assets/aromats1.jpg';
 import auskari2 from '../assets/auskari2.jpg';
 
-
 function Shop() {
   return (
     <div>
+      {/* Sākuma poga paliek redzama */}
       <div className="top-left-button">
         <Link to="/">
           <button className="button home-button">Sākums</button>
@@ -63,7 +63,7 @@ function Shop() {
         </div>
         <div className="image-item">
           <Link to="/aromati">
-            <img src={aromats1} alt="aromats1" />
+            <img src={aromats1} alt="Aromāts" />
             <div className="container">
               <button className="button type1">Mājas un automašīnasa aromāti</button>
             </div>
@@ -71,7 +71,7 @@ function Shop() {
         </div>
         <div className="image-item">
           <Link to="/auskari">
-            <img src={auskari2} alt="auskari2" />
+            <img src={auskari2} alt="Auskari" />
             <div className="container">
               <button className="button type1">Rotas no epoksīda sveķiem</button>
             </div>
@@ -81,6 +81,5 @@ function Shop() {
     </div>
   );
 }
-
 
 export default Shop;
