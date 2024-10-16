@@ -37,10 +37,10 @@ function Grozs({ removeFromCart }) {
     return (
         <div className="grozs-container">
             <h2>Grozs</h2>
-            <Link to="/" className="continue-shopping-button">Turpināt iepirkties</Link>
+            <Link to="/shop" className="continue-shopping-button">Turpināt iepirkties</Link>
 
             {loading ? ( // Show loading state
-                <p>Loading cart items...</p>
+                <p>ielādē produktus...</p>
             ) : (
                 <div className="cart-items">
                     {cartItems.length > 0 ? (

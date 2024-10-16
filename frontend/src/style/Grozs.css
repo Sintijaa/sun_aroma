@@ -65,7 +65,7 @@
 .continue-shopping-button {
     display: inline-block;
     margin-top: 30px;
-    background-color: #27ae60;
+    background-color: #4e5551;
     color: #fff;
     padding: 12px 20px;
     text-decoration: none;
@@ -80,7 +80,7 @@
 }
 
 .continue-shopping-button:hover {
-    background-color: #2ecc71;
+    background-color: #4f5351;
 }
 
 .empty-cart-message {
