@@ -1,38 +1,38 @@
-import React from 'react';
-import '../style/piegade.css';
+// src/piegade.jsx
 
-const Piegade = () => {
-  return (
-    <div className="delivery-container">
-     <div className="top-left-button">
-          <Link to="/">
-            <button className="button home-button">Uz sākumu</button>
-          </Link>
+import React from 'react';
+import '../style/Piegade.css';
+
+function Piegade() {
+    return (
+        <div className="piegade-container">
+            <h1 className="piegade-title">Piegādes Informācija</h1>
+            <div className="piegade-details">
+                <h2>1. Piegādes Metodes</h2>
+                <ul>
+                    <li><strong>Standarta Piegāde:</strong> 3-5 darba dienas - 3.00 EUR</li>
+                    <li><strong>Ekspress Piegāde:</strong> 1-2 darba dienas - 5.00 EUR</li>
+                    <li><strong>Bezmaksas Piegāde:</strong> Pasūtījumiem virs 50.00 EUR</li>
+                </ul>
+            </div>
+            <div className="piegade-details">
+                <h2>2. Piegādes Reģioni</h2>
+                <p>Piegāde pieejama visā Latvijā, izņemot attālos reģionus.</p>
+            </div>
+            <div className="piegade-details">
+                <h2>3. Piegādes Laiks</h2>
+                <p>Piegādes laiks ir atkarīgs no izvēlētās piegādes metodes. Mēs cenšamies nodrošināt ātru un efektīvu piegādi.</p>
+            </div>
+            <div className="piegade-details">
+                <h2>4. Pasūtījumu Sekotspēja</h2>
+                <p>Pēc pasūtījuma veikšanas jūs saņemsiet izsekošanas numuru, lai varētu sekot sava pasūtījuma statusam.</p>
+            </div>
+            <div className="piegade-details">
+                <h2>5. Jautājumi un Atbalsts</h2>
+                <p>Ja jums ir kādi jautājumi par piegādi, lūdzu, sazinieties ar mūsu klientu atbalsta centru.</p>
+            </div>
         </div>
-      <div className="delivery-box">
-        <h1>Piegāde</h1>
-        <ul>
-          <h2>
-            Saņemt pasūtījumu ar Omniva vai DPD pakomātu starpniecību visās Baltijas valstīs.
-          </h2>
-          <h2>
-            Norēķins pēc priekšapmaksas rēķina saņemšanas ar bankas pārskaitījumu.
-          </h2>
-          <h2>
-            Piegādes izmaksas EUR 3.00, ja pasūtījuma summa nepārsniedz EUR 50.00.
-          </h2>
-        </ul>
-        <h2>
-          Visi pasūtījumi tiek apstrādāti 1-3 darba dienu laikā.<br/>
-          Ja pasūtījumu nebūs iespējams izsūtīt minētajā laikā, mēs ar Jums sazināsimies.
-        </h2>
-        <h2>
-          Pirms pasūti, noteikti pārbaudi piegādes informāciju.<br/>
-          Pārbaudi vai esi pareizi ievadījis pakomāta adresi, kā arī pārliecinies lai būtu norādīts precīzs telefona Nr.
-        </h2>
-      </div>
-    </div>
-  );
-};
+    );
+}
 
 export default Piegade;

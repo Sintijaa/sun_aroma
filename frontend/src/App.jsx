@@ -7,8 +7,7 @@ import Piegade from './Components/Piegade';
 import Sveces from './Components/Sveces';
 import Auskari from './Components/Auskari';
 import Aromati from './Components/Aromati';
-
-
+import Grozs from './Components/Grozs';
 
 
 function Home() {
@@ -32,6 +31,7 @@ function Home() {
 
 
 function App() {
+
   return (
     <Router>
       <Routes>
@@ -42,6 +42,7 @@ function App() {
         <Route path="/sveces" element={<Sveces />} />
         <Route path="/auskari" element={<Auskari />} />
         <Route path="/aromati" element={<Aromati />} />
+        <Route path="/grozs" element={<Grozs />} />
       </Routes>
     </Router>
   );

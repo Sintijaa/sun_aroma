@@ -1,23 +1,55 @@
+/* src/style/Sveces.css */
+/* Pievienojiet šos stilus savai CSS failē */
+
+h1 {
+    font-family: 'Lobster', cursive; /* Izvēlētais fonts */
+    font-size: 4em; /* Liels izmērs */
+    color: #131212; /* Siltas krāsas, piemēram, oranža */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Pelēks teksts ar ēnu */
+    margin: 20px 0; /* Atstarpe virs un zem virsraksta */
+    letter-spacing: 2px; /* Atstarpe starp burtiem */
+    text-align: center; /* Centrēts virsraksts */
+    transition: transform 0.3s ease, color 0.3s ease; /* Pievienota pāreja */
+}
+
+
+
 .sveces-container {
+    padding: 20px;
     text-align: center;
-    margin: 20px;
-    background: linear-gradient(to right, #f8f8f8, #e0e0e0); 
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+.home-button {
+    position: absolute; /* Fiksē pogas atrašanās vietu */
+    top: 20px; /* Attālums no lapas augšas */
+    left: 20px; /* Attālums no kreisās malas */
+    background-color: #3d3c3c;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #8a7d7d;
 }
 
 .galerija {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 kolonnas vienā rindā */
-    gap: 40px; /* Attālums starp produktiem */
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .svece {
     background-color: white;
-    padding: 20px;
     border-radius: 10px;
+    padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    max-width: 300px;
+    text-align: left;
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -30,9 +62,8 @@
 
 .svece-bilde {
     width: 100%;
-    max-width: 400px; /* Palielināts maksimālais platums, lai bildes būtu lielākas */
-    height: auto; /* Saglabā proporcijas */
-    border-radius: 10px;
+    height: auto;
+    border-radius: 8px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     margin-bottom: 20px;
@@ -44,38 +75,77 @@
 }
 
 .svece-apraksts {
-    font-size: 1.4em; 
-    color: #181818;
-    text-align: center;
-    margin-top: 10px;
-    padding: 0 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.svece-detailed-description {
+    font-size: 0.9em;
+    color: #555; /* pelēka krāsa */
+    margin-top: 5px;
+}
+
+.svece-price {
+    color: #381b17;
+    font-size: 1.1em;
+    margin-bottom: 10px;
 }
 
 .add-to-cart-button {
-    background-color: #5d5e5d; 
+    background-color: #8a7d7d;
     color: white;
-    padding: 12px 20px;
+    padding: 10px;
     border: none;
-    border-radius: 50px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 15px;
+    font-size: 1em;
+    transition: background-color 0.3s;
 }
 
 .add-to-cart-button:hover {
-    background-color: #4e4d4e;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background-color: #5c5454;
 }
 
 /* Responsivitātei */
 @media (max-width: 900px) {
     .galerija {
-        grid-template-columns: repeat(2, 1fr); /* 2 produkti rindā uz mazākiem ekrāniem */
+        grid-template-columns: repeat(2, 1fr); /* 2 kolonnas uz mazākiem ekrāniem */
     }
 }
 
 @media (max-width: 600px) {
     .galerija {
-        grid-template-columns: 1fr; /* 1 produkts rindā uz vēl mazākiem ekrāniem */
+        grid-template-columns: 1fr; /* 1 kolonna uz vēl mazākiem ekrāniem */
     }
+}
+
+/* Grozs sadaļa */
+.grozs-container {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+.grozs-container h2 {
+    font-size: 1.5em;
+}
+
+.grozs-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.grozs-container li {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.grozs-container button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
 }
