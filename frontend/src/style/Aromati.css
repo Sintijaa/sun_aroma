@@ -1,20 +1,22 @@
 /* src/style/Sveces.css */
 
-.sveces-container {
-    padding: 20px;
+.container {
+    padding: 30px;
     text-align: center;
+    background-color: #f5f5f5; /* Viegli pelēks fons */
+    border-radius: 10px;
 }
 
 .home-button, .view-cart-button {
     position: absolute;
     top: 20px;
-    background-color: #3d3c3c;
+    background-color: #333; /* Tumši pelēks fons */
     color: white;
-    padding: 10px 15px;
+    padding: 12px 18px;
     text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    transition: background-color 0.3s ease;
+    border-radius: 8px; /* Kārtīgāki apaļumi */
+    font-size: 1.1em;
+    transition: background-color 0.4s ease, transform 0.3s ease;
 }
 
 .home-button {
@@ -26,94 +28,117 @@
 }
 
 .home-button:hover, .view-cart-button:hover {
-    background-color: #8a7d7d;
+    background-color: #555; /* Tumšāks hover efekts */
+    transform: translateY(-2px); /* Viegla animācija hover laikā */
 }
 
 .galerija {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
+    gap: 20px; /* Atstarpe starp vienumiem */
 }
 
-.svece-item {
-    /* Noņemam fona krāsu */
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    max-width: 300px;
+.aromats-item {
+    border-radius: 12px; /* Gludāki stūri */
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Viegla ēna */
+    margin: 15px;
+    max-width: 280px; /* Mazliet šaurāks */
     text-align: left;
-    transition: transform 0.3s ease;
+    background-color: #fff; /* Balts fons vienumiem */
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Gluda pāreja */
     position: relative;
 }
 
-.svece-item:hover {
-    transform: translateY(-10px);
+.aromats-item:hover {
+    transform: translateY(-8px) scale(1.03); /* Mazliet pacelts un palielināts hover laikā */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Spēcīgāka ēna hover laikā */
 }
 
-.svece-bilde {
+.aromats-bilde {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 10px; /* Vairāk noapaļoti attēli */
+    transition: opacity 0.3s ease; /* Attēlam viegla animācija */
 }
 
-.svece-name {
-    font-weight: bold;
+.aromats-bilde:hover {
+    opacity: 0.9; /* Attēls nedaudz izbalē hover laikā */
+}
+
+.aromats-name {
+    font-weight: 700;
+    font-size: 1.3em;
+    color: #2c3e50; /* Tumši zils */
+    margin-bottom: 8px;
+}
+
+.aromats-price {
+    color: #d35400; /* Tumši oranža cena */
     font-size: 1.2em;
-    margin-bottom: 5px;
+    margin-bottom: 12px;
+    font-weight: 600;
 }
 
-.svece-price {
-    color: #381b17;
-    font-size: 1.1em;
-    margin-bottom: 10px;
-}
-
-.svece-description {
+.aromatsdescription {
     color: #7f8c8d;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1em;
 }
 
 .add-to-cart-button {
     background-color: #8a7d7d;
     color: white;
-    padding: 10px;
+    padding: 12px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px; /* Apaļāka poga */
     cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s;
+    font-size: 1.1em;
+    transition: background-color 0.4s, transform 0.3s ease;
 }
 
 .add-to-cart-button:hover {
     background-color: #5c5454;
+    transform: translateY(-3px); /* Neliela animācija uz augšu */
 }
 
 .sold-out-circle {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: rgb(160, 22, 22);
+    background-color: #c0392b; /* Tumši sarkana paziņojuma krāsa */
     color: white;
-    padding: 5px 10px;
-    border-radius: 10%;
-    font-size: 1.0em;
-    text-align: center; 
-    display: flex; 
+    padding: 7px 12px;
+    border-radius: 50%; /* Pilnīgi apaļš */
+    font-size: 1.1em;
+    text-align: center;
+    display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     z-index: 1;
 }
 
 /* Responsivitātei */
 @media (max-width: 900px) {
     .galerija {
-        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        justify-content: center; /* Vienmērīgs izvietojums mazākām ierīcēm */
+    }
+
+    .aromats-item {
+        max-width: 250px;
     }
 }
 
 @media (max-width: 600px) {
     .galerija {
-        grid-template-columns: 1fr;
+        flex-direction: column; /* Vertikāls izvietojums ļoti šauriem ekrāniem */
+        align-items: center;
+    }
+
+    .home-button, .view-cart-button {
+        font-size: 1em;
+        padding: 10px 15px;
     }
 }
