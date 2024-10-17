@@ -1,151 +1,103 @@
 /* src/style/Sveces.css */
-/* Pievienojiet šos stilus savai CSS failē */
-
-h1 {
-    font-family: 'Lobster', cursive; /* Izvēlētais fonts */
-    font-size: 4em; /* Liels izmērs */
-    color: #131212; /* Siltas krāsas, piemēram, oranža */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Pelēks teksts ar ēnu */
-    margin: 20px 0; /* Atstarpe virs un zem virsraksta */
-    letter-spacing: 2px; /* Atstarpe starp burtiem */
-    text-align: center; /* Centrēts virsraksts */
-    transition: transform 0.3s ease, color 0.3s ease; /* Pievienota pāreja */
-}
-
-
 
 .sveces-container {
-    padding: 20px;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 40px;
+    background: #fffaf0; /* Neitrāla, maiga fona krāsa */
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.sveces-container h1 {
+    font-size: 2.5em;
+    color: #2c3e50;
     text-align: center;
-}
-
-.home-button {
-    position: absolute; /* Fiksē pogas atrašanās vietu */
-    top: 20px; /* Attālums no lapas augšas */
-    left: 20px; /* Attālums no kreisās malas */
-    background-color: #3d3c3c;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    transition: background-color 0.3s ease;
-}
-
-.home-button:hover {
-    background-color: #8a7d7d;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .galerija {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Dinamiski izkārto elementus režģī */
+    gap: 30px;
 }
 
-.svece {
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    max-width: 300px;
-    text-align: left;
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.svece-item {
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
 }
 
-.svece:hover {
-    transform: translateY(-10px);
+.svece-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .svece-bilde {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 100%;
+    border-radius: 10px;
     margin-bottom: 20px;
 }
 
-.svece-bilde:hover {
-    transform: scale(1.05);
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+.svece-info {
+    padding: 15px 0;
 }
 
-.svece-apraksts {
+.svece-name {
+    font-size: 1.5em;
+    color: #34495e;
+    margin-bottom: 10px;
     font-weight: bold;
-    font-size: 1.2em;
-    margin-bottom: 5px;
-}
-
-.svece-detailed-description {
-    font-size: 0.9em;
-    color: #555; /* pelēka krāsa */
-    margin-top: 5px;
 }
 
 .svece-price {
-    color: #381b17;
-    font-size: 1.1em;
+    font-size: 1.2em;
+    color: #e67e22;
     margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.svece-description {
+    font-size: 1em;
+    color: #7f8c8d;
+    margin-bottom: 20px;
 }
 
 .add-to-cart-button {
-    background-color: #8a7d7d;
-    color: white;
-    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
     border: none;
-    border-radius: 5px;
+    padding: 12px 20px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 600;
 }
 
 .add-to-cart-button:hover {
-    background-color: #5c5454;
+    background-color: #2980b9;
+    transform: translateY(-3px);
 }
 
-/* Responsivitātei */
-@media (max-width: 900px) {
-    .galerija {
-        grid-template-columns: repeat(2, 1fr); /* 2 kolonnas uz mazākiem ekrāniem */
-    }
+.home-button, .view-cart-button {
+    display: inline-block;
+    margin: 10px 15px;
+    padding: 10px 20px;
+    background-color: #2ecc71;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
-@media (max-width: 600px) {
-    .galerija {
-        grid-template-columns: 1fr; /* 1 kolonna uz vēl mazākiem ekrāniem */
-    }
-}
-
-/* Grozs sadaļa */
-.grozs-container {
-    margin-top: 20px;
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
-}
-
-.grozs-container h2 {
-    font-size: 1.5em;
-}
-
-.grozs-container ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.grozs-container li {
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 0;
-}
-
-.grozs-container button {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
+.home-button:hover, .view-cart-button:hover {
+    background-color: #27ae60;
 }

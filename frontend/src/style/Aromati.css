@@ -1,14 +1,13 @@
-/* src/style/Aromati.css */
+/* src/style/Sveces.css */
 
-.aromati-container {
+.sveces-container {
     padding: 20px;
     text-align: center;
 }
 
-.home-button {
-    position: absolute; /* Fiksē pogas atrašanās vietu */
-    top: 20px; /* Attālums no lapas augšas */
-    left: 20px; /* Attālums no kreisās malas */
+.home-button, .view-cart-button {
+    position: absolute;
+    top: 20px;
     background-color: #3d3c3c;
     color: white;
     padding: 10px 15px;
@@ -18,7 +17,15 @@
     transition: background-color 0.3s ease;
 }
 
-.home-button:hover {
+.home-button {
+    left: 20px;
+}
+
+.view-cart-button {
+    right: 20px;
+}
+
+.home-button:hover, .view-cart-button:hover {
     background-color: #8a7d7d;
 }
 
@@ -28,25 +35,8 @@
     flex-wrap: wrap;
 }
 
-.sold-out-circle {
-    position: absolute; /* Pozicionēts absolūti attiecībā pret parent elementu */
-    top: 10px; /* Attālums no augšas */
-    right: 10px; /* Attālums no labās malas */
-    background-color: rgb(160, 22, 22); /* Sarkanā krāsa */
-    color: white; /* Teksta krāsa */
-    padding: 5px 10px; /* Iekšējā atstarpe */
-    border-radius: 10%; /* Aplis */
-    font-size: 1.0em; /* Mazāks fonts */
-    text-align: center; 
-    display: flex; 
-    justify-content: center;
-    align-items: center; 
-    z-index: 1; 
-}
-
-
-.aromats-item {
-    background-color: #f9f9f9;
+.svece-item {
+    /* Noņemam fona krāsu */
     border-radius: 8px;
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -54,33 +44,32 @@
     max-width: 300px;
     text-align: left;
     transition: transform 0.3s ease;
-    position: relative; /* Lai sarkanais aplis būtu pozicionēts attiecībā pret šo elementu */
-    margin: 20px; /* Attālums starp elementiem */
+    position: relative;
 }
 
-.aromats-item:hover {
-    transform: translateY(-10px); /* Peldošs efekts hover laikā */
+.svece-item:hover {
+    transform: translateY(-10px);
 }
 
-.aromats-bilde {
+.svece-bilde {
     width: 100%;
     height: auto;
     border-radius: 8px;
 }
 
-.aromats-apraksts {
+.svece-name {
     font-weight: bold;
     font-size: 1.2em;
     margin-bottom: 5px;
 }
 
-.aromats-price {
+.svece-price {
     color: #381b17;
     font-size: 1.1em;
     margin-bottom: 10px;
 }
 
-.aromats-description {
+.svece-description {
     color: #7f8c8d;
     margin-bottom: 10px;
 }
@@ -100,15 +89,31 @@
     background-color: #5c5454;
 }
 
+.sold-out-circle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgb(160, 22, 22);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10%;
+    font-size: 1.0em;
+    text-align: center; 
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    z-index: 1;
+}
+
 /* Responsivitātei */
 @media (max-width: 900px) {
     .galerija {
-        grid-template-columns: repeat(2, 1fr); /* 2 kolonnas uz mazākiem ekrāniem */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 600px) {
     .galerija {
-        grid-template-columns: 1fr; /* 1 kolonna uz vēl mazākiem ekrāniem */
+        grid-template-columns: 1fr;
     }
 }

@@ -24,6 +24,7 @@ function Sveces() {
 
         setSessionId(existingSessionId);
     }, []); // Run once on mount
+
     const addToCart = async (item) => {
         if (!sessionId) {
             console.error('Session ID is not set');
@@ -50,10 +51,9 @@ function Sveces() {
         }
     };
     
-
     const products = [
-        { id: 1, name: 'Kvarcs', price: 15.99, image: kvarcs, description: 'Sojas vaska svece ar dabīgiem akmeņiem - Kvarcs' },
-        { id: 2, name: 'Ametists', price: 19.99, image: ametists, description: 'Sojas vaska svece ar dabīgiem akmeņiem - Ametists' }
+        { id: 1, name: 'Kvarcs', price: '15.99 EUR', image: kvarcs, description: 'Sojas vaska svece ar dabīgiem akmeņiem - Kvarcs' },
+        { id: 2, name: 'Ametists', price: '19.99 EUR', image: ametists, description: 'Sojas vaska svece ar dabīgiem akmeņiem - Ametists' }
     ];
 
     return (
@@ -64,11 +64,19 @@ function Sveces() {
             <h1>Dizaina sveces</h1>
             <div className="galerija">
                 {products.map((product) => (
-                    <div className="svece" key={product.id}>
+                    <div key={product.id} className="svece-item">
                         <img src={product.image} alt={product.name} className="svece-bilde" />
-                        <p className="svece-apraksts">{product.description}</p>
-                        <p className="svece-detailed-description">{product.description}</p>
-                        <button className="add-to-cart-button" onClick={() => addToCart(product)}>Pievienot grozam</button>
+                        <div className="svece-info">
+                            <p className="svece-name">{product.name}</p>
+                            <p className="svece-price">{product.price}</p>
+                            <p className="svece-description">{product.description}</p>
+                            <button 
+                                className="add-to-cart-button" 
+                                onClick={() => addToCart(product)}
+                            >
+                                Pievienot grozam
+                            </button>
+                        </div>
                     </div>
                 ))}
             </div>
