@@ -113,6 +113,11 @@ h1 {
   font-size: 18px;
   color: #333;
 }
+/* Noņemam fonus visiem uzrakstiem */
+h1, h2, h3, h4, h5, h6, p, span, a {
+  background-color: transparent; /* Noņem fonu */
+}
+
 
 /* Mobilā versija */
 @media (max-width: 768px) {
