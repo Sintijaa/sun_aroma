@@ -1,39 +1,49 @@
-import React, { useRef } from 'react';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 import './App.css';
-import { useNavigate } from 'react-router-dom';
+import Shop from './Components/Shop';  
+import Meistarklase from './Components/Meistarklase';
+import Sveces from './Components/Sveces';
+import Auskari from './Components/Auskari';
+import PaymentForm from './Components/PaymentForm'; // Pievienots imports
+
+const stripePromise = loadStripe('YOUR_PUBLIC_KEY'); // Aizstājiet ar savu Stripe publisko atslēgu
 
 function Home() {
   const navigate = useNavigate();
-  const aboutUsRef = useRef(null);
-
-  const scrollToAboutUs = () => {
-    aboutUsRef.current.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <div className="background">
-      <div className="overlay">
-        <div className="content">
-          <span className="logo">Sun Aroma</span>
-          <div className="button-container">
-            <button className="custom-button" onClick={() => navigate('/shop')}>Doties uz veikalu</button>
-            <button className="custom-button" onClick={() => navigate('/meistarklase')}>Meistarklases</button>
-            <button className="custom-button" onClick={() => navigate('/piegade')}>Piegāde</button>
-          </div>
-        </div>
-        <div className="scroll-down-arrow" onClick={scrollToAboutUs}>
-          ⬇️ {/* Bultiņa, kas ritina uz leju */}
-        </div>
-      </div>
-
-      {/* "About Us" sekcija */}
-      <div ref={aboutUsRef} className="about-container">
-        <h1>Par Mums</h1>
-        <p>Sun Aroma ir uzņēmums, kas nodarbojas ar kvalitatīvu aromātu radīšanu jūsu mājai un automašīnai.</p>
-        <p>Mēs piedāvājam arī meistarklases, kur jūs varat iemācīties, kā veidot aromātiskas sveces un citus aksesuārus.</p>
+      <div className="content">
+        <h1>Sun Aroma</h1>
+        <button onClick={() => navigate('/shop')}>Doties uz veikalu</button>
+        <button onClick={() => navigate('/meistarklase')}>Meistarklases</button>
+        <button onClick={() => navigate('/piegade')}>Piegāde</button>
       </div>
     </div>
   );
 }
 
-export default Home;
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/meistarklase" element={<Meistarklase />} />
+        <Route path="/sveces" element={<Sveces />} />
+        <Route path="/auskari" element={<Auskari />} />
+        <Route path="/payment" element={
+          <Elements stripe={stripePromise}>
+            <PaymentForm />
+          </Elements>
+        } />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;

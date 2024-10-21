@@ -58,7 +58,7 @@ function Sveces() {
 
     return (
         <div className="sveces-container">
-            <Link to="/" className="home-button">Sākums</Link>
+            <Link to="/shop" className="home-button">Sākums</Link>
             <Link to="/grozs" className="view-cart-button">Skatīt grozu ({cartItems.length})</Link>
 
             <h1>Dizaina sveces</h1>

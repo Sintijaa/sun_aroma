@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: rgba(255, 255, 255, 0.87);
   background-color: #d6cfd6;
 }
@@ -22,7 +22,6 @@ body {
   align-items: center;
   filter: brightness(60%);
 }
-
 .overlay {
   position: absolute; /* Nodrošina, ka saturs ir virs fona */
   top: 0;
@@ -40,23 +39,24 @@ body {
   text-align: center;
   padding: 20px 40px;
   border-radius: 12px;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.5); /* Pārklājums ar nelielu tumšu caurspīdību */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.logo {
-  font-size: 5em; /* Lielāks nosaukuma izmērs */
+
+h1 {
+  font-size: 6em; /* Lielāks izmērs uzrakstam */
   color: #f3eeee;
   font-weight: bold;
-  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-  margin-bottom: 40px; /* Attālums starp nosaukumu un pogām */
-  padding: 20px; /* Iekšējā atstarpe ap tekstu */
-  background-color: rgba(0, 0, 0, 0.5); /* Tumšs caurspīdīgs fons */
-  border-radius: 10px; /* Noapaļotas malas */
+  text-shadow: 0px 4px 15px rgba(177, 177, 177, 0.5);
+  margin-bottom: 40px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase; /* Lielie burti */
+ 
+ 
 }
-
 
 .button-container {
   display: flex;
@@ -279,13 +279,46 @@ body {
   padding: 15px 40px;
   font-size: 1.3em;
   font-weight: 600;
-  background-color: #8a7d7d;
+  background-color: #918f8f;
   color: white;
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 }
-/* Mobilās versijas stili */
+button {
+  margin-top: 20px;
+  border-radius: 30px;
+  border: none;
+  padding: 15px 50px;
+  font-size: 1.5em;
+  font-weight: 600;
+  background-color: #887d79;
+  color: rgb(26, 24, 24);
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+button:hover {
+  background-color: #948b8b;
+  transform: scale(1.1);
+}
+
+button:active {
+  transform: scale(1);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3em; /* Mazāks teksts mobilajā versijā */
+  }
+
+  button {
+    padding: 12px 30px;
+    font-size: 1.2em;
+  }
+}
 @media (max-width: 768px) {
   .logo-image {
     width: 60px; /* Samazināts izmērs mobilajām ierīcēm */
