@@ -1,51 +1,39 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+import React, { useRef } from 'react';
 import './App.css';
-import Shop from './Components/Shop';  
-import Meistarklase from './Components/Meistarklase';
-import Piegade from './Components/Piegade';
-import Sveces from './Components/Sveces';
-import Auskari from './Components/Auskari';
-import Aromati from './Components/Aromati';
-import Grozs from './Components/Grozs';
-
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
   const navigate = useNavigate();
+  const aboutUsRef = useRef(null);
+
+  const scrollToAboutUs = () => {
+    aboutUsRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <div className="background">
-      <div className="content">
-        <span className="logo">Sun Aroma</span>
-        <div className="button-container">
-          <button className="custom-button" onClick={() => navigate('/shop')}>Doties uz veikalu</button>
-          <button className="custom-button" onClick={() => navigate('/meistarklase')}>Meistarklases</button>
-          <button className="custom-button" onClick={() => navigate('/piegade')}>Piegāde</button>
+      <div className="overlay">
+        <div className="content">
+          <span className="logo">Sun Aroma</span>
+          <div className="button-container">
+            <button className="custom-button" onClick={() => navigate('/shop')}>Doties uz veikalu</button>
+            <button className="custom-button" onClick={() => navigate('/meistarklase')}>Meistarklases</button>
+            <button className="custom-button" onClick={() => navigate('/piegade')}>Piegāde</button>
+          </div>
         </div>
+        <div className="scroll-down-arrow" onClick={scrollToAboutUs}>
+          ⬇️ {/* Bultiņa, kas ritina uz leju */}
+        </div>
+      </div>
+
+      {/* "About Us" sekcija */}
+      <div ref={aboutUsRef} className="about-container">
+        <h1>Par Mums</h1>
+        <p>Sun Aroma ir uzņēmums, kas nodarbojas ar kvalitatīvu aromātu radīšanu jūsu mājai un automašīnai.</p>
+        <p>Mēs piedāvājam arī meistarklases, kur jūs varat iemācīties, kā veidot aromātiskas sveces un citus aksesuārus.</p>
       </div>
     </div>
   );
 }
 
-
-
-
-function App() {
-
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/meistarklase" element={<Meistarklase />} />
-        <Route path="/piegade" element={<Piegade />} />
-        <Route path="/sveces" element={<Sveces />} />
-        <Route path="/auskari" element={<Auskari />} />
-        <Route path="/aromati" element={<Aromati />} />
-        <Route path="/grozs" element={<Grozs />} />
-      </Routes>
-    </Router>
-  );
-}
-
-export default App;
+export default Home;

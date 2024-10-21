@@ -1,13 +1,16 @@
 import React from 'react';
-import '../style/parMums.css';
+import '../style/ParMums.css';  // Stils priekš Par Mums lapas
 
-const ParMums = () => {
+function AboutUs() {
   return (
-    <section id="par-mums-section">
-      <h2>Par Mums</h2>
-      <p>Šeit ir informācija par uzņēmumu, kas nodarbojas ar svecēm un auskariem.</p>
-    </section>
+    <div className="about-container">
+      <h1>Par Mums</h1>
+      <p>Sun Aroma ir uzņēmums, kas nodarbojas ar kvalitatīvu aromātu radīšanu jūsu mājai un automašīnai. 
+         Mūsu produkti ir veidoti ar mīlestību un rūpību, lai radītu harmonisku atmosfēru jūsu ikdienā.</p>
+      <p>Mēs piedāvājam arī meistarklases, kur jūs varat iemācīties, kā veidot aromātiskas sveces un citus aksesuārus. 
+         Pievienojieties mūsu kopienai un izbaudiet aromātu burvību!</p>
+    </div>
   );
 }
 
-export default ParMums;
+export default AboutUs;
