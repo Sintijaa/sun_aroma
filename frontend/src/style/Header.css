@@ -1,0 +1,35 @@
+/* src/Components/Header.css */
+.header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 1.2em;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    overflow: hidden; /* Lai slēptu pārsniegto saturu */
+  }
+  
+  .marquee {
+    display: flex; /* Flexbox, lai uzraksti būtu rindā */
+    white-space: nowrap; /* Novērš, ka uzraksti sadalās divās rindās */
+    animation: marquee 40s linear infinite; /* Animācija, kas ilgs 15 sekundes */
+  }
+  
+  .marquee p {
+    margin: 0; /* Noņemam margin, lai nebūtu atstarpes */
+    padding: 0 50px; /* Pievienojam padding, lai nebūtu pieblīvēts */
+  }
+  
+  /* Animācija pārvietojot uzrakstus */
+  @keyframes marquee {
+    0% {
+      transform: translateX(100%); /* Sākas ārpus ekrāna labajā pusē */
+    }
+    100% {
+      transform: translateX(-100%); /* Beidzas ārpus ekrāna kreisajā pusē */
+    }
+  }
+  

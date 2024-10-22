@@ -8,8 +8,9 @@ import Shop from './Components/Shop';
 import Meistarklase from './Components/Meistarklase';
 import Sveces from './Components/Sveces';
 import Auskari from './Components/Auskari';
+import Ziepes from './Components/Ziepes';
 import PaymentForm from './Components/PaymentForm.jsx';
- // Pievienots imports
+import Header from './Components/Header';
 
 const stripePromise = loadStripe('YOUR_PUBLIC_KEY'); // Aizstājiet ar savu Stripe publisko atslēgu
 
@@ -31,12 +32,14 @@ function Home() {
 function App() {
   return (
     <Router>
+     <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/meistarklase" element={<Meistarklase />} />
         <Route path="/sveces" element={<Sveces />} />
         <Route path="/auskari" element={<Auskari />} />
+        <Route path="ziepes" element={<Ziepes />} />
         <Route path="/payment" element={
           <Elements stripe={stripePromise}>
             <PaymentForm />

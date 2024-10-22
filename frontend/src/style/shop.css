@@ -56,7 +56,7 @@ h1 {
 
 .top-left-button {
   position: absolute;
-  top: 10px;
+  top: 40px; /* Pārvietots zemāk */
   left: 10px;
 }
 
@@ -68,7 +68,9 @@ h1 {
   cursor: pointer;
   font-size: 16px;
   border-radius: 5px;
+  margin-top: 30px; /* Pievienots augšējais atstarpe, ja nepieciešams */
 }
+
 .shop-container {
   padding: 20px;
   max-width: 1200px;

@@ -3,7 +3,7 @@
     --hover-primary-color: #0073a5;
     --accent-color: #4CAF50;
     --hover-accent-color: #388E3C;
-    --text-color: #444;
+    --text-color: #020202;
     --light-text-color: #888;
     --background-color: #f7f7f7;
     --shadow-color: rgba(0, 0, 0, 0.05);
@@ -11,51 +11,53 @@
 }
 
 .sveces-container {
-    padding: 30px;
+    padding: 10px;
     text-align: center;
-    background-color: #f5f5f5; /* Viegli pelēks fons */
-    border-radius: 10px;
+}
+.home-button {
+    position: absolute; /* Fiksē pogas atrašanās vietu */
+    top: 20px; /* Attālums no lapas augšas */
+    left: 20px; /* Attālums no kreisās malas */
+    background-color: #3d3c3c;
+    color: rgb(255, 254, 254);
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
 }
 
-.sveces-container h1 {
-    font-size: 2.2em;
-    color: var(--text-color);
-    text-align: center;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: 500;
+.home-button:hover {
+    background-color: #8a7d7d;
 }
 
 .galerija {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
-    gap: 20px; /* Atstarpe starp vienumiem */
 }
+
 
 .svece-item {
-    border-radius: 12px; /* Gludāki stūri */
-    padding: 20px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Viegla ēna */
-    margin: 15px;
-    max-width: 280px; /* Mazliet šaurāks */
+    background-color: #dddddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    max-width: 400px;
     text-align: left;
-    background-color: #fff; /* Balts fons vienumiem */
-    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Gluda pāreja */
-    position: relative;
+    transition: transform 0.3s ease;
 }
 
+
 .svece-item:hover {
-    transform: translateY(-8px) scale(1.03); /* Mazliet pacelts un palielināts hover laikā */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Spēcīgāka ēna hover laikā */
+    transform: translateY(-10px);
 }
 
 .svece-bilde {
     width: 100%;
     height: auto;
-    border-radius: 10px; /* Vairāk noapaļoti attēli */
-    transition: opacity 0.3s ease; /* Attēlam viegla animācija */
+    border-radius: 8px;
 }
 .svece-bilde:hover {
     opacity: 0.9;
@@ -66,23 +68,23 @@
 }
 
 .svece-name {
-    font-size: 1.4em;
+    font-size: 2em;
     color: var(--text-color);
     margin-bottom: 8px;
     font-weight: 600;
 }
 
 .svece-price {
-    color: #d35400; /* Tumši oranža cena */
-    font-size: 1.2em;
-    margin-bottom: 12px;
-    font-weight: 600;
+    color: #080808;
+    font-size: 1.3em;
+    margin-bottom: 10px;
 }
 
 .svece-description {
-    color: #7f8c8d;
-    margin-bottom: 15px;
-    font-size: 1em;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: #080808;
 }
 
 .add-to-cart-button {

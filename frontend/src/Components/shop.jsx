@@ -5,7 +5,7 @@ import epoksids from '../assets/epoksids.jpg';
 import sveces from '../assets/sveces.jpg';
 import vasks from '../assets/vasks.jpg';
 import burti from '../assets/burti.jpg';
-import ziepes from '../assets/ziepes.jpeg';
+import ziepes from '../assets/ziepes.jpg';
 import aromats1 from '../assets/aromats1.jpg';
 import auskari2 from '../assets/auskari2.jpg';
 

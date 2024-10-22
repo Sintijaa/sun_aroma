@@ -20,7 +20,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  filter: brightness(60%);
+  filter: brightness(80%);
 }
 .overlay {
   position: absolute; /* Nodrošina, ka saturs ir virs fona */
