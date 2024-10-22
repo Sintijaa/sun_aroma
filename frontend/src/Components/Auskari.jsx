@@ -54,8 +54,8 @@ function Auskari() {
     };
 
     const products = [
-        { id: 1, name: 'Epoksīda sveķu auskari ar sudraba folliju', price: '12.99 EUR', image: auskari1, description: 'Eleganti auskari ar sudraba folliju' },
-        { id: 2, name: 'Auskari ar kaltētiem ziediem', price: '14.99 EUR', image: auskari2, description: 'Auskari ar skaistiem kaltētiem ziediem' },
+        { id: 1, name: 'Epoksīda sveķu auskari ar sudraba folliju', price: '8.00 EUR', image: auskari1, description: 'Eleganti auskari ar sudraba folliju' },
+        { id: 2, name: 'Auskari ar kaltētiem ziediem', price: '10.00 EUR', image: auskari2, description: 'Auskari ar skaistiem kaltētiem ziediem' },
         { id: 3, name: 'Auskari kas atgādinās par vasaru pat ziemā', price: '16.99 EUR', image: auskari3, description: 'Gaiši un krāsaini auskari' },
         { id: 4, name: 'Auskari spilgtiem cilvēkiem', price: '18.99 EUR', image: auskari4, description: 'Spilgti auskari pašizpausmei' }
     ];

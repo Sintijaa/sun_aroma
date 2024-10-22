@@ -8,7 +8,8 @@ import Shop from './Components/Shop';
 import Meistarklase from './Components/Meistarklase';
 import Sveces from './Components/Sveces';
 import Auskari from './Components/Auskari';
-import PaymentForm from './Components/PaymentForm'; // Pievienots imports
+import PaymentForm from './Components/PaymentForm.jsx';
+ // Pievienots imports
 
 const stripePromise = loadStripe('YOUR_PUBLIC_KEY'); // Aizstājiet ar savu Stripe publisko atslēgu
 
