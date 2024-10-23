@@ -1,16 +1,22 @@
 import React from 'react';
-import '../style/ParMums.css';  // Stils priekš Par Mums lapas
+import '../style/ParMums.css';
+import EsAttels from '../assets/es.jpg'; // Norādi uz attēlu
 
-function AboutUs() {
+function ParMums() {
   return (
-    <div className="about-container">
-      <h1>Par Mums</h1>
-      <p>Sun Aroma ir uzņēmums, kas nodarbojas ar kvalitatīvu aromātu radīšanu jūsu mājai un automašīnai. 
-         Mūsu produkti ir veidoti ar mīlestību un rūpību, lai radītu harmonisku atmosfēru jūsu ikdienā.</p>
-      <p>Mēs piedāvājam arī meistarklases, kur jūs varat iemācīties, kā veidot aromātiskas sveces un citus aksesuārus. 
-         Pievienojieties mūsu kopienai un izbaudiet aromātu burvību!</p>
-    </div>
+    <section className="par-mums-section">
+      <div className="par-mums-container">
+        <img src={EsAttels} alt="Es" className="par-mums-image" />
+        <div className="par-mums-text">
+          <h2>Par mums</h2>
+          <p>
+            Mēs esam komanda, kas rada aromātiskās sveces un citus produktus, lai piepildītu jūsu mājas ar patīkamu smaržu un
+            komfortu.
+          </p>
+        </div>
+      </div>
+    </section>
   );
 }
 
-export default AboutUs;
+export default ParMums;

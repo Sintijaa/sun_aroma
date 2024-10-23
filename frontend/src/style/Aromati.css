@@ -1,24 +1,25 @@
 /* src/style/Sveces.css */
 
-.container {
-    padding: 30px;
+.aromati-container {
+    padding: 0px;
     text-align: center;
-    background-color: #f5f5f5; /* Viegli pelēks fons */
-    border-radius: 10px;
-}
 
-.home-button, .view-cart-button {
-    position: absolute;
-    top: 20px;
-    background-color: #333; /* Tumši pelēks fons */
-    color: white;
-    padding: 12px 18px;
+.home-button {
+    position: absolute; /* Fiksē pogas atrašanās vietu */
+    top: 20px; /* Attālums no lapas augšas */
+    left: 20px; /* Attālums no kreisās malas */
+    background-color: #3d3c3c;
+    color: rgb(255, 254, 254);
+    padding: 10px 15px;
     text-decoration: none;
-    border-radius: 8px; /* Kārtīgāki apaļumi */
-    font-size: 1.1em;
-    transition: background-color 0.4s ease, transform 0.3s ease;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
 }
 
+.home-button:hover {
+    background-color: #8a7d7d;
+}
 .home-button {
     left: 20px;
 }
@@ -34,37 +35,29 @@
 
 .galerija {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
-    gap: 20px; /* Atstarpe starp vienumiem */
 }
 
 .aromats-item {
-    border-radius: 12px; /* Gludāki stūri */
-    padding: 20px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Viegla ēna */
-    margin: 15px;
-    max-width: 280px; /* Mazliet šaurāks */
+    background-color: #dddddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    max-width: 400px;
     text-align: left;
-    background-color: #fff; /* Balts fons vienumiem */
-    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Gluda pāreja */
-    position: relative;
+    transition: transform 0.3s ease;
 }
 
 .aromats-item:hover {
-    transform: translateY(-8px) scale(1.03); /* Mazliet pacelts un palielināts hover laikā */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Spēcīgāka ēna hover laikā */
+    transform: translateY(-10px);
 }
 
 .aromats-bilde {
     width: 100%;
     height: auto;
-    border-radius: 10px; /* Vairāk noapaļoti attēli */
-    transition: opacity 0.3s ease; /* Attēlam viegla animācija */
-}
-
-.aromats-bilde:hover {
-    opacity: 0.9; /* Attēls nedaudz izbalē hover laikā */
+    border-radius: 8px;
 }
 
 .aromats-name {
@@ -75,32 +68,30 @@
 }
 
 .aromats-price {
-    color: #d35400; /* Tumši oranža cena */
-    font-size: 1.2em;
-    margin-bottom: 12px;
-    font-weight: 600;
+    color: #080808;
+    font-size: 1.1em;
+    margin-bottom: 10px;
 }
 
 .aromatsdescription {
-    color: #7f8c8d;
-    margin-bottom: 15px;
-    font-size: 1em;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 5px;
 }
 
 .add-to-cart-button {
     background-color: #8a7d7d;
-    color: white;
-    padding: 12px;
+    color: rgb(2, 2, 2);
+    padding: 10px;
     border: none;
-    border-radius: 8px; /* Apaļāka poga */
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 1.1em;
-    transition: background-color 0.4s, transform 0.3s ease;
+    font-size: 1em;
+    transition: background-color 0.3s;
 }
 
 .add-to-cart-button:hover {
-    background-color: #5c5454;
-    transform: translateY(-3px); /* Neliela animācija uz augšu */
+   background-color: #8a8282;
 }
 
 .sold-out-circle {
@@ -141,4 +132,5 @@
         font-size: 1em;
         padding: 10px 15px;
     }
+}
 }

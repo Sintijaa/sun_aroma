@@ -12,7 +12,6 @@ import auskari2 from '../assets/auskari2.jpg';
 function Shop() {
   return (
     <div>
-      {/* Sākuma poga paliek redzama */}
       <div className="top-left-button">
         <Link to="/">
           <button className="button home-button">Sākums</button>

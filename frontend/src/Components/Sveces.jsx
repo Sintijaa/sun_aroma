@@ -26,6 +26,7 @@ function Sveces() {
     }, []); // Run once on mount
 
     const addToCart = async (item) => {
+        console.log('Current session ID:', sessionId); // Pārbaudei
         if (!sessionId) {
             console.error('Session ID is not set');
             return;
@@ -40,6 +41,7 @@ function Sveces() {
     
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/cart', productData);
+            console.log(response.data); // Pārbaudei
             setCartItems([...cartItems, item]);
             console.log(response.data.message); // Response from the backend
         } catch (error) {

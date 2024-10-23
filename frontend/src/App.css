@@ -350,3 +350,21 @@ button:active {
   line-height: 1.6;
   color: #333;
 }
+.par-mums-button {
+  position: fixed; /* Fiksēta pozīcija, lai poga vienmēr būtu redzama apakšā */
+  bottom: 20px; /* Novietota 20px virs lapas apakšas */
+  left: 50%; /* Centrujot pogu horizontāli */
+  transform: translateX(-50%); /* Precīza centrošana */
+  background-color: #000; /* Melna fona krāsa */
+  color: #fff; /* Balts teksts */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease; /* Pievienots smooth hover efekts */
+}
+
+.par-mums-button:hover {
+  background-color: #333; /* Tumšāks melns, kad uzbrauc ar kursoru */
+}

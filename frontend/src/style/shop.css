@@ -53,24 +53,33 @@ h1 {
   font-size: 18px;
   margin: 1em 0.8em;
 }
-
 .top-left-button {
   position: absolute;
   top: 40px; /* Pārvietots zemāk */
   left: 10px;
 }
-
+.home-button:hover {
+  background-color: #45a049; /* Tumšāka krāsa uz hover */
+}
 .home-button {
   background-color: #3b3b3b;
   color: white;
-  padding: 10px 20px;
+  padding: 10px 20px; /* Pievienots pamatam */
   border: none;
   cursor: pointer;
   font-size: 16px;
   border-radius: 5px;
   margin-top: 30px; /* Pievienots augšējais atstarpe, ja nepieciešams */
+  transition: background-color 0.3s ease; /* Pievienots pārejas efekts */
 }
-
+@media (max-width: 768px) {
+  .home-button {
+    width: 100%; /* Poga aizņem visu platumu */
+    padding: 12px; /* Palielināts augstums pogai */
+    font-size: 18px; /* Lielāks fonta izmērs mobilajā versijā */
+    margin-top: 20px; /* Samazināts augšējais atstarpe */
+  }
+}
 .shop-container {
   padding: 20px;
   max-width: 1200px;
