@@ -18,6 +18,7 @@ class CreateShoppingCartTable extends Migration
             $table->string('session_id'); // Storing session ID to track anonymous users
             $table->unsignedBigInteger('product_id'); // Product ID in the cart
             $table->integer('quantity')->default(1); // Default quantity is 1
+            $table->string('image')->nullable();
             $table->decimal('price', 10, 2); // Price of the product at the time of adding
             $table->timestamps(); // Created and updated timestamps
 

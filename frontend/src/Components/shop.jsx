@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../style/Shop.css';
@@ -8,8 +9,12 @@ import burti from '../assets/burti.jpg';
 import ziepes from '../assets/ziepes.jpg';
 import aromats1 from '../assets/aromats1.jpg';
 import auskari2 from '../assets/auskari2.jpg';
+import Cookies from 'js-cookie'; // Import the js-cookie library
 
 function Shop() {
+  // Get the number of items in the cart from the cookie or local state
+  const cartItemsCount = Cookies.get('cart_items_count') || 0;
+
   return (
     <div>
       <div className="top-left-button">
@@ -19,6 +24,14 @@ function Shop() {
       </div>
 
       <h1>Kategorijas</h1>
+      
+      {/* Cart Link with Item Count */}
+      <div className="top-right-button">
+        <Link to="/grozs">
+          <button className="button cart-button">Grozs ({cartItemsCount})</button>
+        </Link>
+      </div>
+
       <div className="image-gallery">
         <div className="image-item">
           <Link to="/dekori">

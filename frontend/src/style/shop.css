@@ -164,3 +164,23 @@ h1, h2, h3, h4, h5, h6, p, span, a {
     font-size: 14px;
   }
 }
+
+.top-right-button {
+  position: absolute;
+  top: 20px; /* Adjust as necessary */
+  right: 20px; /* Adjust as necessary */
+}
+
+.cart-button {
+  background-color: #635857; /* Example color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cart-button:hover {
+  background-color: #181818; /* Darker shade on hover */
+}

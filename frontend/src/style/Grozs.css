@@ -2,7 +2,7 @@
     max-width: 1000px;
     margin: 50px auto;
     padding: 40px;
-    background: linear-gradient(135deg, #e6f7ff, #f4f7fa);
+    background: linear-gradient(135deg, #f2f2f2, #e6e6e6);
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
@@ -16,7 +16,7 @@
     font-size: 2.8em;
     font-weight: bold;
     margin-bottom: 30px;
-    color: #2c3e50;
+    color: #070707;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 3px;
@@ -37,7 +37,7 @@
     padding: 25px;
     background-color: #fff;
     border-radius: 15px;
-    border-left: 6px solid #3498db;
+    border-left: 6px solid #0f0f0f;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -45,12 +45,12 @@
 .cart-item:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    border-left-color: #2980b9;
+    border-left-color: #070707;
 }
 
 .cart-item p {
     margin: 0;
-    color: #34495e;
+    color: #050505;
     font-size: 1.2em;
     flex: 1;
 }
@@ -59,10 +59,10 @@
     max-width: 70px;
     border-radius: 50%;
     margin-right: 20px;
+    border: 2px solid #575858; 
 }
-
 .cart-item button {
-    background-color: #e74c3c;
+    background-color: #070707; 
     color: #fff;
     border: none;
     padding: 12px 20px;
@@ -74,14 +74,14 @@
 }
 
 .cart-item button:hover {
-    background-color: #c0392b;
+    background-color: #1a242f; 
     transform: translateY(-2px);
 }
 
 .continue-shopping-button {
     display: block;
     margin: 40px auto;
-    background-color: #2ecc71;
+    background-color: #161616; 
     color: #fff;
     padding: 15px 25px;
     text-decoration: none;
@@ -94,13 +94,13 @@
 }
 
 .continue-shopping-button:hover {
-    background-color: #27ae60;
+    background-color: #191a1a; 
     transform: translateY(-3px);
 }
 
 .empty-cart-message {
     text-align: center;
-    color: #95a5a6;
+    color: #7f8c8d;
     font-size: 1.6em;
     margin-top: 40px;
     font-weight: 600;
@@ -108,11 +108,11 @@
 }
 
 .cart-item p {
-    width: 35%; /* Adjusted for better readability */
+    width: 35%; 
     text-align: left;
 }
 
 p {
-    color: #2c3e50;
+    color: #080808; 
     font-weight: 500;
 }

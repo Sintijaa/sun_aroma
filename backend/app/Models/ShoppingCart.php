@@ -17,6 +17,7 @@ class ShoppingCart extends Model
         'session_id',
         'product_id',
         'quantity',
+        'image',
         'price',
     ];
 

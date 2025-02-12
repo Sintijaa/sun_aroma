@@ -7,9 +7,12 @@ import '../style/Ziepes.css';
 import ziepes1 from '../assets/ziepes1.jpg';
 import ziepes2 from '../assets/ziepes2.jpg';
 
+
 function Ziepes() {
     const [cartItems, setCartItems] = useState([]);
     const [sessionId, setSessionId] = useState(null); // Sesijas ID
+    const { cartCount, updateCartCount } = useCartCount();
+
 
     useEffect(() => {
         // Pārbauda, vai sesijas ID cookie pastāv
@@ -40,7 +43,10 @@ function Ziepes() {
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/cart', productData);
             setCartItems([...cartItems, item]);
-            console.log(response.data.message); // Atbildes ziņojums no servera
+            console.log(response.data.message);
+            
+            // Atjaunina groza skaitu
+            updateCartCount(cartCount + 1);
         } catch (error) {
             if (error.response) {
                 console.error('Kļūda pievienojot grozam', error.response.data);
@@ -51,15 +57,15 @@ function Ziepes() {
     };
 
     const products = [
-        { id: 1, name: 'Ziepes ar kafiju', price: '5.00 EUR', image: ziepes1, description: 'Ziepes ar kafiju kas būs kā skrubis, ziepēm ir pievienota dabīgas apelsīna ēteriksā eļļa' },
-        { id: 2, name: 'Ziepes ar kaltētu piparmētru', price: '5.00 EUR', image: ziepes2, description: 'Ziepes ar kaltētu piparmētu un ar pirparmētras ēterisko eļlu' },
+        { id: 3, name: 'Ziepes ar kafiju', price: '5.00', image: ziepes1, description: 'Ziepes ar kafiju kas būs kā skrubis, ziepēm ir pievienota dabīgas apelsīna ēteriksā eļļa' },
+        { id: 4, name: 'Ziepes ar kaltētu piparmētru', price: '5.00', image: ziepes2, description: 'Ziepes ar kaltētu piparmētu un ar pirparmētras ēterisko eļlu' },
        
     ];
 
     return (
         <div className="ziepes-container">
             <Link to="/shop" className="home-button">Sākums</Link>
-            <Link to="/grozs" className="view-cart-button">Skatīt grozu ({cartItems.length})</Link>
+            <Link to="/grozs" className="view-cart-button">Skatīt grozu ({cartCount})</Link>
 
             <h1>Dabīgas ziepes</h1>
             <div className="galerija">

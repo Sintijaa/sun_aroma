@@ -10,8 +10,9 @@ function ParMums() {
         <div className="par-mums-text">
           <h2>Par mums</h2>
           <p>
-            Mēs esam komanda, kas rada aromātiskās sveces un citus produktus, lai piepildītu jūsu mājas ar patīkamu smaržu un
-            komfortu.
+            Čau! Esmu Sintija un esmu radījusi uzņemumu Sun Aroma. Tas ir kaut kas vairāk kā vienkrārši uzņēmums, tas ir stāsts par skaistiem un dabīgiem porduktiem.
+            Kur satiekas dabīgi produkti ar skaistu dizainu.
+            Sun Aromas sākums bija sojas vaska sveces, bet tagad tas ir plašs klāsts ar produktiem, sveces, ziepes, eposīda rotas un dekori, mājas un automašīnas aromāti.
           </p>
         </div>
       </div>

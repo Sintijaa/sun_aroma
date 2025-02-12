@@ -15,6 +15,8 @@ class ProductTableSeeder extends Seeder
             'description' => 'Sojas vaska svece ar dabīgiem akmeņiem - Kvarcs',
             'price' => 15.99,
             'stock' => 100,
+            'image' => 'Kvarcs'
+
         ]);
 
         Product::create([
@@ -22,12 +24,15 @@ class ProductTableSeeder extends Seeder
             'description' => 'Sojas vaska svece ar dabīgiem akmeņiem - Ametists',
             'price' => 19.99,
             'stock' => 100,
+            'image' => 'Ametists'
         ]);
         Product::create([
             'name' => 'Ametists',
             'description' => 'Sojas vaska svece ar dabīgiem akmeņiem - Ametists',
             'price' => 19.99,
             'stock' => 100,
+            'image' => 'Ametists'
+
         ]);
     }
 }

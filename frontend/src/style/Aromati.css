@@ -82,9 +82,9 @@
 .add-to-cart-button {
     background-color: #8a7d7d;
     color: rgb(2, 2, 2);
-    padding: 10px;
+    padding: 6px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s;
@@ -98,10 +98,10 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: #c0392b; /* Tumši sarkana paziņojuma krāsa */
+    background-color: #c0392b; 
     color: white;
     padding: 7px 12px;
-    border-radius: 50%; /* Pilnīgi apaļš */
+    border-radius: 50%;
     font-size: 1.1em;
     text-align: center;
     display: flex;
@@ -114,7 +114,7 @@
 @media (max-width: 900px) {
     .galerija {
         gap: 15px;
-        justify-content: center; /* Vienmērīgs izvietojums mazākām ierīcēm */
+        justify-content: center; 
     }
 
     .aromats-item {
@@ -124,7 +124,7 @@
 
 @media (max-width: 600px) {
     .galerija {
-        flex-direction: column; /* Vertikāls izvietojums ļoti šauriem ekrāniem */
+        flex-direction: column;
         align-items: center;
     }
 
@@ -133,4 +133,84 @@
         padding: 10px 15px;
     }
 }
+}
+
+.aromats-select {
+    margin-right: 10px; 
+    padding: 8px 12px; 
+    font-size: 16px;
+    border: 2px solid #070707;
+    border-radius: 5px; 
+    background-color: #f9f9f9; 
+    cursor: pointer; 
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.aromats-select:hover {
+    border-color: #0d0d0e; 
+    background-color: #e7f1ff; 
+}
+
+.quantity-container {
+    display: flex;
+    align-items: center; 
+}
+
+
+.quantity-controls {
+    display: flex;
+    align-items: center; /* Vertikāli centrē pogas */
+    justify-content: center; /* Horizontāli centrē pogas */
+    margin-right: 10px;
+}
+
+.quantity-button {
+    width: 30px; 
+    height: 30px;
+    font-size: 18px; 
+    display: flex;
+    align-items: center;  /* Vertikāli centrē tekstu pogā */
+    justify-content: center; /* Horizontāli centrē tekstu pogā */
+    background-color: #000000; 
+    color: rgb(253, 253, 253); 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s;
+}
+
+
+
+.quantity-display {
+    margin: 0 4px; 
+    font-size: 18px; 
+    width: 36px;
+    height: 30px;
+    color: #000000; 
+    background-color: #ffffff; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    text-align: center; 
+}
+
+
+.add-to-cart-button {
+    background-color: #070707;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s; 
+}
+
+
+
+.aromats-info {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
 }

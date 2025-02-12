@@ -10,11 +10,11 @@ import Sveces from './Components/Sveces';
 import Auskari from './Components/Auskari';
 import Ziepes from './Components/Ziepes';
 import Aromati from './Components/Aromati';
-import PaymentForm from './Components/PaymentForm.jsx';
 import Header from './Components/Header';
-import ParMums from './Components/ParMums'; // Importējam ParMums komponenti
+import ParMums from './Components/ParMums'; 
+import Grozs from './Components/Grozs.jsx';
+import SuccessPage from './Components/Success.jsx';
 
-const stripePromise = loadStripe('YOUR_PUBLIC_KEY'); // Aizstājiet ar savu Stripe publisko atslēgu
 
 function Home() {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ function Home() {
     <div className="background">
       <div className="content">
         <h1>Sun Aroma</h1>
-        <button onClick={() => navigate('/shop')}>Doties uz veikalu</button>
+        <button className='shop-button' id='shop-button' onClick={() => navigate('/shop')}>Doties uz veikalu</button>
         <button onClick={() => navigate('/meistarklase')}>Meistarklases</button>
         <button onClick={() => navigate('/piegade')}>Piegāde</button>
       </div>
@@ -42,7 +42,7 @@ function App() {
 
 // Izveidojam atsevišķu komponenti maršrutu pārvaldīšanai
 function AppRoutes() {
-  const location = useLocation(); // Tagad ir pareizajā vietā, iekš Router konteksta
+  const location = useLocation(); 
 
   return (
     <>
@@ -54,11 +54,11 @@ function AppRoutes() {
         <Route path="/auskari" element={<Auskari />} />
         <Route path="/ziepes" element={<Ziepes />} />
         <Route path="/aromati" element={<Aromati />} />
-        <Route path="/payment" element={
-          <Elements stripe={stripePromise}>
-            <PaymentForm />
-          </Elements>
-        } />
+        <Route path="/grozs" element={<Grozs />} />
+        <Route path="/success" element={<SuccessPage />} />
+        <Route path="/parMums" element={<ParMums />} />
+       
+
       </Routes>
 
       {/* Tikai zem sākumlapas maršruta rādām sadaļu ParMums */}

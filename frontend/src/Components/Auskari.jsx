@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Cookies from 'js-cookie'; // Importēts js-cookie
+import Cookies from 'js-cookie'; 
 import '../style/Auskari.css';
 import auskari1 from '../assets/auskari1.jpg';
 import auskari2 from '../assets/auskari2.jpg';
@@ -12,52 +12,59 @@ import auskari4 from '../assets/auskari4.jpg';
 
 function Auskari() {
     const [cartItems, setCartItems] = useState([]);
-    const [sessionId, setSessionId] = useState(null); // Sesijas ID
+    const [sessionId, setSessionId] = useState(null); // State for session ID
 
     useEffect(() => {
-        // Pārbauda, vai sesijas ID cookie pastāv
+        // Check if a session ID cookie exists
         let existingSessionId = Cookies.get('session_id');
         
         if (!existingSessionId) {
-            // Izveido jaunu sesijas ID, ja tāds nepastāv
-            existingSessionId = `session_${Date.now()}`;
-            Cookies.set('session_id', existingSessionId, { expires: 7 }); // Saglabā sesijas cookie uz 7 dienām
+            // Create a new session ID if it doesn't exist
+            existingSessionId = `session_${Date.now()}`; // Simple session ID generation
+            Cookies.set('session_id', existingSessionId, { expires: 7 }); // Set cookie for 7 days
         }
 
         setSessionId(existingSessionId);
-    }, []); // Izpilda vienreiz pēc komponenta montēšanas
+    }, []); // Run once on mount
 
     const addToCart = async (item) => {
+        console.log('Current session ID:', sessionId);
+        console.log('Item name:', item.name); // For debugging
+    
         if (!sessionId) {
-            console.error('Sesijas ID nav iestatīts');
+            console.error('Session ID is not set');
             return;
         }
-
+    
+        // Construct the image name based on the product name
+        const imageName = item.name.toLowerCase(); // Convert to lowercase
         const productData = {
             product_id: item.id,
             quantity: 1,
             session_id: sessionId,
+            image: imageName, // Use the constructed image name
             price: item.price
         };
-
+        console.log('Payload to API:', productData);
+    
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/cart', productData);
+            console.log(response.data);
             setCartItems([...cartItems, item]);
-            console.log(response.data.message); // Atbildes ziņojums no servera
         } catch (error) {
             if (error.response) {
-                console.error('Kļūda pievienojot grozam', error.response.data);
+                console.error('Error adding to cart', error.response.data);
             } else {
-                console.error('Kļūda pievienojot grozam', error.message);
+                console.error('Error adding to cart', error.message);
             }
         }
     };
 
     const products = [
-        { id: 1, name: 'Epoksīda sveķu auskari ar sudraba folliju', price: '8.00 EUR', image: auskari1, description: 'Eleganti auskari ar sudraba folliju' },
-        { id: 2, name: 'Auskari ar kaltētiem ziediem', price: '10.00 EUR', image: auskari2, description: 'Auskari ar skaistiem kaltētiem ziediem' },
-        { id: 3, name: 'Auskari kas atgādinās par vasaru pat ziemā', price: '16.99 EUR', image: auskari3, description: 'Gaiši un krāsaini auskari' },
-        { id: 4, name: 'Auskari spilgtiem cilvēkiem', price: '18.99 EUR', image: auskari4, description: 'Spilgti auskari pašizpausmei' }
+        { id: 5, name: 'Epoksīda sveķu auskari ar sudraba folliju', price: '8.00', image: auskari1, description: 'Eleganti auskari ar sudraba folliju' },
+        { id: 6, name: 'Auskari ar kaltētiem ziediem', price: '10.00', image: auskari2, description: 'Auskari ar skaistiem kaltētiem ziediem' },
+        { id: 7, name: 'Auskari kas atgādinās par vasaru pat ziemā', price: '16.99', image: auskari3, description: 'Gaiši un krāsaini auskari' },
+        { id: 8, name: 'Auskari spilgtiem cilvēkiem', price: '18.99', image: auskari4, description: 'Spilgti auskari pašizpausmei' }
     ];
 
     return (
