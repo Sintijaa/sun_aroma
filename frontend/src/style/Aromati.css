@@ -1,216 +1,546 @@
-/* src/style/Sveces.css */
-
-.aromati-container {
-    padding: 0px;
-    text-align: center;
-
-.home-button {
-    position: absolute; /* Fiksē pogas atrašanās vietu */
-    top: 20px; /* Attālums no lapas augšas */
-    left: 20px; /* Attālums no kreisās malas */
-    background-color: #3d3c3c;
-    color: rgb(255, 254, 254);
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    transition: background-color 0.3s ease;
+/* Modern Aromati Styles - Melns/Balts ar bordo akcentiem */
+:root {
+    --primary-color: #8B0000; /* Bordo */
+    --primary-light: #C41E3A; /* Gaišāks bordo */
+    --primary-dark: #640000; /* Tumšāks bordo */
+    --text-light: #ffffff;  /* Balts */
+    --text-dark: #222222;   /* Gandrīz melns */
+    --background-light: #f8f8f8; /* Ļoti gaišs pelēks */
+    --background-dark: #e0e0e0; /* Gaišs pelēks */
+    --background-black: #1a1a1a; /* Gandrīz melns */
+    --success-color: #4caf50;
+    --error-color: #f44336;
+    --border-radius: 4px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s ease;
 }
 
-.home-button:hover {
-    background-color: #8a7d7d;
-}
-.home-button {
-    left: 20px;
-}
-
-.view-cart-button {
-    right: 20px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.home-button:hover, .view-cart-button:hover {
-    background-color: #555; /* Tumšāks hover efekts */
-    transform: translateY(-2px); /* Viegla animācija hover laikā */
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    background-color: var(--background-light);
+    line-height: 1.4; /* Samazināts line-height */
 }
 
-.galerija {
+.container {
+    width: 95%; /* Palielināts, lai būtu vairāk vietas attēliem */
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+.site-header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.5rem; /* Samazināts padding */
 }
 
-.aromats-item {
-    background-color: #dddddd;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    max-width: 400px;
-    text-align: left;
-    transition: transform 0.3s ease;
+.logo-container {
+    flex: 0 0 auto;
 }
 
-.aromats-item:hover {
-    transform: translateY(-10px);
+.logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
 }
 
-.aromats-bilde {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-.aromats-name {
+.logo-text {
+    font-size: 1.5rem; /* Samazināts izmērs */
     font-weight: 700;
-    font-size: 1.3em;
-    color: #2c3e50; /* Tumši zils */
-    margin-bottom: 8px;
+    color: var(--text-dark);
+    letter-spacing: -0.5px;
 }
 
-.aromats-price {
-    color: #080808;
-    font-size: 1.1em;
-    margin-bottom: 10px;
-}
-
-.aromatsdescription {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-bottom: 5px;
-}
-
-.add-to-cart-button {
-    background-color: #8a7d7d;
-    color: rgb(2, 2, 2);
-    padding: 6px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s;
-}
-
-.add-to-cart-button:hover {
-   background-color: #8a8282;
-}
-
-.sold-out-circle {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #c0392b; 
-    color: white;
-    padding: 7px 12px;
-    border-radius: 50%;
-    font-size: 1.1em;
-    text-align: center;
+.navigation-container {
+    flex: 1 1 auto;
     display: flex;
     justify-content: center;
+}
+
+.main-nav {
+    display: flex;
+    gap: 1.5rem; /* Samazināta atstarpe */
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+    padding: 0.3rem 0; /* Samazināta atstarpe */
+    font-size: 0.9rem; /* Samazināts font izmērs */
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.cart-container {
+    flex: 0 0 auto;
+}
+
+.cart-link {
+    position: relative;
+    text-decoration: none;
+    display: flex;
     align-items: center;
+}
+
+.cart-icon {
+    font-size: 1.3rem; /* Samazināts izmērs */
+    color: var(--text-dark);
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border-radius: 50%;
+    width: 18px; /* Samazināts izmērs */
+    height: 18px; /* Samazināts izmērs */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem; /* Samazināts izmērs */
+    font-weight: 600;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+}
+
+.menu-icon, .menu-icon::before, .menu-icon::after {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-dark);
+    transition: var(--transition);
+}
+
+.menu-icon {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.menu-icon::before, .menu-icon::after {
+    content: '';
+    left: 0;
+}
+
+.menu-icon::before {
+    top: -8px;
+}
+
+.menu-icon::after {
+    bottom: -8px;
+}
+
+/* Banner Styles */
+.page-banner {
+    background-color: var(--background-black);
+    color: var(--text-light);
+    padding: 4rem 1rem; /* Samazināts padding */
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('../assets/aromats1.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.banner-content {
+    position: relative;
     z-index: 1;
 }
 
-/* Responsivitātei */
-@media (max-width: 900px) {
-    .galerija {
-        gap: 15px;
-        justify-content: center; 
+.page-banner h1 {
+    font-size: 2.5rem; /* Samazināts izmērs */
+    margin-bottom: 0.5rem; /* Samazināta atstarpe */
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.page-banner p {
+    font-size: 1rem; /* Samazināts izmērs */
+    opacity: 0.9;
+    max-width: 500px; /* Samazināts platums */
+    margin: 0 auto;
+    letter-spacing: 0.5px;
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 70px; /* Samazināta atstarpe */
+    right: 20px;
+    padding: 0.75rem 1.25rem; /* Samazināts padding */
+    border-radius: var(--border-radius);
+    color: var(--text-light);
+    font-weight: 500;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    animation: slideIn 0.3s forwards;
+    font-size: 0.9rem; /* Samazināts izmērs */
+}
+
+.notification.success {
+    background-color: var(--success-color);
+}
+
+.notification.error {
+    background-color: var(--error-color);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
     }
-
-    .aromats-item {
-        max-width: 250px;
+    to {
+        transform: translateX(0);
+        opacity: 1;
     }
 }
 
-@media (max-width: 600px) {
-    .galerija {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .home-button, .view-cart-button {
-        font-size: 1em;
-        padding: 10px 15px;
-    }
-}
+/* Products Section */
+.products-section {
+    padding: 3rem 0; /* Samazināts padding */
 }
 
-.aromats-select {
-    margin-right: 10px; 
-    padding: 8px 12px; 
-    font-size: 16px;
-    border: 2px solid #070707;
-    border-radius: 5px; 
-    background-color: #f9f9f9; 
-    cursor: pointer; 
-    transition: border-color 0.3s, background-color 0.3s;
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem; /* Samazināta atstarpe */
 }
 
-.aromats-select:hover {
-    border-color: #0d0d0e; 
-    background-color: #e7f1ff; 
-}
-
-.quantity-container {
+.product-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
     display: flex;
-    align-items: center; 
+    flex-direction: column;
+    position: relative;
 }
 
-
-.quantity-controls {
-    display: flex;
-    align-items: center; /* Vertikāli centrē pogas */
-    justify-content: center; /* Horizontāli centrē pogas */
-    margin-right: 10px;
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-.quantity-button {
-    width: 30px; 
-    height: 30px;
-    font-size: 18px; 
+.product-media {
+    position: relative;
+    overflow: hidden;
+    height: 350px; /* Palielināts attēla augstums */
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+.product-content {
+    padding: 1.5rem; /* Samazināts padding */
+    flex-grow: 1;
     display: flex;
-    align-items: center;  /* Vertikāli centrē tekstu pogā */
-    justify-content: center; /* Horizontāli centrē tekstu pogā */
-    background-color: #000000; 
-    color: rgb(253, 253, 253); 
+    flex-direction: column;
+}
+
+.product-title {
+    font-size: 1.3rem; /* Samazināts izmērs */
+    margin-bottom: 0.3rem; /* Samazināta atstarpe */
+    color: var(--text-dark);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.product-price {
+    font-size: 1.5rem; /* Samazināts izmērs */
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem; /* Samazināta atstarpe */
+}
+
+.product-description {
+    margin-bottom: 1rem; /* Samazināta atstarpe */
+    color: #666;
+    font-size: 0.85rem; /* Samazināts izmērs */
+}
+
+.product-form {
+    margin-top: auto;
+}
+
+.form-group {
+    margin-bottom: 1rem; /* Samazināta atstarpe */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.3rem; /* Samazināta atstarpe */
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.8rem; /* Samazināts izmērs */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: '▼';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 0.7rem; /* Samazināts izmērs */
+    color: var(--text-dark);
+}
+
+select {
+    width: 100%;
+    padding: 0.7rem 1rem; /* Samazināts padding */
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    background-color: white;
+    font-size: 0.9rem; /* Samazināts izmērs */
+    appearance: none;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.2);
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    width: fit-content;
+}
+
+.quantity-btn {
+    background: none;
     border: none;
-    border-radius: 5px; 
-    cursor: pointer; 
-    transition: background-color 0.3s;
-}
-
-
-
-.quantity-display {
-    margin: 0 4px; 
-    font-size: 18px; 
-    width: 36px;
-    height: 30px;
-    color: #000000; 
-    background-color: #ffffff; 
+    width: 36px; /* Samazināts izmērs */
+    height: 36px; /* Samazināts izmērs */
+    font-size: 1.1rem; /* Samazināts izmērs */
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #dddddd;
-    border-radius: 5px;
-    text-align: center; 
+    transition: var(--transition);
 }
 
+.quantity-btn:hover {
+    background-color: var(--background-dark);
+}
 
-.add-to-cart-button {
-    background-color: #070707;
-    color: white;
-    padding: 10px 15px;
+.quantity-display {
+    padding: 0 1rem; /* Samazināts padding */
+    font-weight: 600;
+    min-width: 36px; /* Samazināts izmērs */
+    text-align: center;
+    font-size: 0.9rem; /* Samazināts izmērs */
+}
+
+.add-to-cart-btn {
+    background-color: var(--primary-color);
+    color: var(--text-light);
     border: none;
-    border-radius: 5px; 
+    border-radius: var(--border-radius);
+    padding: 0.8rem 1.25rem; /* Samazināts padding */
+    font-size: 0.9rem; /* Samazināts izmērs */
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s; 
+    transition: var(--transition);
+    width: 100%;
+    margin-top: 0.5rem; /* Samazināta atstarpe */
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
+.add-to-cart-btn:hover {
+    background-color: var(--primary-dark);
+}
 
+.add-to-cart-btn.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
 
-.aromats-info {
-    display: flex;
-    flex-direction: column; 
-    align-items: flex-start; 
+/* Debug info */
+.debug-info {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: var(--border-radius);
+    padding: 0.75rem; /* Samazināts padding */
+    margin: 0.75rem auto; /* Samazināta atstarpe */
+    max-width: 1200px;
+    overflow: auto;
+}
+
+.debug-info pre {
+    font-family: monospace;
+    font-size: 0.8rem; /* Samazināts izmērs */
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--background-black);
+    color: var(--text-light);
+    padding: 2rem 0; /* Samazināts padding */
+    text-align: center;
+    margin-top: 3rem; /* Samazināta atstarpe */
+    font-size: 0.9rem; /* Samazināts izmērs */
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem; /* Samazināta atstarpe */
+    }
+    
+    .product-media {
+        height: 320px; /* Pielāgots, bet joprojām lielāks */
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0.75rem;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .main-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.25rem; /* Samazināts padding */
+        gap: 1.25rem; /* Samazināta atstarpe */
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .page-banner h1 {
+        font-size: 2.2rem; /* Samazināts izmērs */
+    }
+    
+    .page-banner p {
+        font-size: 0.95rem; /* Samazināts izmērs */
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .product-media {
+        height: 280px; /* Pielāgots, bet joprojām lielāks */
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        padding: 0.6rem 0.8rem; /* Samazināts padding */
+    }
+    
+    .logo-text {
+        font-size: 1.3rem; /* Samazināts izmērs */
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-banner {
+        padding: 2.5rem 1rem; /* Samazināts padding */
+    }
+    
+    .page-banner h1 {
+        font-size: 1.8rem; /* Samazināts izmērs */
+    }
+    
+    .notification {
+        right: 10px;
+        left: 10px;
+        width: auto;
+    }
+    
+    .product-media {
+        height: 250px; /* Pielāgots, bet joprojām pietiekami liels */
+    }
+    
+    .product-content {
+        padding: 1.25rem; /* Samazināts padding */
+    }
 }

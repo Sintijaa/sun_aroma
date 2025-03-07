@@ -1,6 +1,6 @@
 // server.js
 const express = require('express');
-const stripe = require('stripe')('YOUR_SECRET_KEY'); // Aizstājiet ar savu Stripe slepeno atslēgu
+const stripe = require('stripe')('YOUR_SECRET_KEY'); 
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -16,7 +16,7 @@ app.post('/create-payment-intent', async (req, res) => {
     try {
         const paymentIntent = await stripe.paymentIntents.create({
             amount,
-            currency: 'eur', // Izvēlieties savu valūtu
+            currency: 'eur', 
         });
         res.send({ clientSecret: paymentIntent.client_secret });
     } catch (error) {

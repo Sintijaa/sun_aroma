@@ -1,9 +1,7 @@
-// src/components/Auskari.js
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Cookies from 'js-cookie'; 
+import Cookies from 'js-cookie';
 import '../style/Auskari.css';
 import auskari1 from '../assets/auskari1.jpg';
 import auskari2 from '../assets/auskari2.jpg';
@@ -11,53 +9,86 @@ import auskari3 from '../assets/auskari3.jpg';
 import auskari4 from '../assets/auskari4.jpg';
 
 function Auskari() {
-    const [cartItems, setCartItems] = useState([]);
-    const [sessionId, setSessionId] = useState(null); // State for session ID
+    const [cartCount, setCartCount] = useState(0);
+    const [sessionId, setSessionId] = useState(null);
+    const [quantities, setQuantities] = useState({});
+    const [loading, setLoading] = useState(false);
+    const [notification, setNotification] = useState({ show: false, message: '', type: '' });
+    const [debug, setDebug] = useState(null);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
-        // Check if a session ID cookie exists
         let existingSessionId = Cookies.get('session_id');
-        
         if (!existingSessionId) {
-            // Create a new session ID if it doesn't exist
-            existingSessionId = `session_${Date.now()}`; // Simple session ID generation
-            Cookies.set('session_id', existingSessionId, { expires: 7 }); // Set cookie for 7 days
+            existingSessionId = `session_${Date.now()}`;
+            Cookies.set('session_id', existingSessionId, { expires: 7 });
         }
-
         setSessionId(existingSessionId);
-    }, []); // Run once on mount
+
+        // Load initial cart count from localStorage or set to 0
+        const initialCartCount = parseInt(localStorage.getItem('cartCount')) || 0;
+        setCartCount(initialCartCount);
+    }, []);
+
+    const showNotification = (message, type = 'success') => {
+        setNotification({ show: true, message, type });
+        setTimeout(() => {
+            setNotification({ show: false, message: '', type: '' });
+        }, 3000);
+    };
 
     const addToCart = async (item) => {
-        console.log('Current session ID:', sessionId);
-        console.log('Item name:', item.name); // For debugging
-    
         if (!sessionId) {
-            console.error('Session ID is not set');
+            showNotification('Sesijas ID nav iestatīts', 'error');
             return;
         }
-    
-        // Construct the image name based on the product name
-        const imageName = item.name.toLowerCase(); // Convert to lowercase
+
+        setLoading(true);
+
         const productData = {
-            product_id: item.id,
-            quantity: 1,
+            product_id: parseInt(item.id, 10),
+            quantity: quantities[item.id] || 1,
             session_id: sessionId,
-            image: imageName, // Use the constructed image name
-            price: item.price
+            price: parseFloat(item.price),
+            image: item.name
         };
-        console.log('Payload to API:', productData);
-    
+
+        setDebug(productData);
+
         try {
+            console.log('Sending cart data:', productData);
+            
             const response = await axios.post('http://127.0.0.1:8000/api/cart', productData);
-            console.log(response.data);
-            setCartItems([...cartItems, item]);
+            console.log('Server response:', response.data);
+            
+            const updatedCartCount = cartCount + (quantities[item.id] || 1);
+            setCartCount(updatedCartCount);
+            localStorage.setItem('cartCount', updatedCartCount.toString());
+            showNotification('Prece pievienota grozam!');
         } catch (error) {
+            console.error('Kļūda pievienojot grozam:', error);
             if (error.response) {
-                console.error('Error adding to cart', error.response.data);
+                console.error('Response data:', error.response.data);
+                console.error('Response status:', error.response.status);
+                
+                let errorMessage = 'Kļūda pievienojot grozam';
+                if (error.response.data && error.response.data.message) {
+                    errorMessage = error.response.data.message;
+                }
+                showNotification(errorMessage, 'error');
             } else {
-                console.error('Error adding to cart', error.message);
+                showNotification('Neizdevās savienoties ar serveri', 'error');
             }
+        } finally {
+            setLoading(false);
         }
+    };
+
+    const handleQuantityChange = (id, change) => {
+        setQuantities((prev) => ({
+            ...prev,
+            [id]: Math.max((prev[id] || 1) + change, 1)
+        }));
     };
 
     const products = [
@@ -68,29 +99,126 @@ function Auskari() {
     ];
 
     return (
-        <div className="auskari-container">
-            <Link to="/shop" className="home-button">Sākums</Link>
-            <Link to="/grozs" className="view-cart-button">Skatīt grozu ({cartItems.length})</Link>
-
-            <h1>Epoksīda sveķu rotas</h1>
-            <div className="galerija">
-                {products.map((product) => (
-                    <div key={product.id} className="auskari-item">
-                        <img src={product.image} alt={product.name} className="auskari-bilde" />
-                        <div className="auskari-info">
-                            <p className="auskari-name">{product.name}</p>
-                            <p className="auskari-price">{product.price}</p>
-                            <p className="auskari-description">{product.description}</p>
-                            <button 
-                                className="add-to-cart-button" 
-                                onClick={() => addToCart(product)}
-                            >
-                                Pievienot grozam
-                            </button>
-                        </div>
+        <div className="auskari-page">
+            {/* Modern header with responsive navigation */}
+            <header className="site-header">
+                <div className="header-container">
+                    <div className="logo-container">
+                        <Link to="/" className="logo-link">
+                            <span className="logo-text">Sun Aroma</span>
+                        </Link>
                     </div>
-                ))}
-            </div>
+                    
+                    <div className="navigation-container">
+                        <button 
+                            className="menu-toggle"
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            aria-label="Toggle menu"
+                        >
+                            <span className="menu-icon"></span>
+                        </button>
+                        
+                        <nav className={`main-nav ${isMenuOpen ? 'nav-open' : ''}`}>
+                            <Link to="/" className="nav-link">Sākums</Link>
+                            <Link to="/shop" className="nav-link">Veikals</Link>
+                            <Link to="/contact" className="nav-link">Kontakti</Link>
+                        </nav>
+                    </div>
+                    
+                    <div className="cart-container">
+                        <Link to="/grozs" className="cart-link">
+                            <span className="cart-icon">🛒</span>
+                            <span className="cart-count">{cartCount}</span>
+                        </Link>
+                    </div>
+                </div>
+            </header>
+
+            {/* Notification system */}
+            {notification.show && (
+                <div className={`notification ${notification.type}`}>
+                    {notification.message}
+                </div>
+            )}
+
+            {/* Page banner */}
+            <section className="page-banner">
+                <div className="banner-content">
+                    <h1>Epoksīda sveķu rotas</h1>
+                    <p>Unikālas roku darinātas rotaslietas ar īpašu dizainu</p>
+                </div>
+            </section>
+
+            {/* Debug information - only shown during development */}
+            {debug && (
+                <div className="debug-info">
+                    <h3>Debug Information (Remove in production)</h3>
+                    <pre>{JSON.stringify(debug, null, 2)}</pre>
+                </div>
+            )}
+
+            {/* Product listing */}
+            <section className="products-section">
+                <div className="container">
+                    <div className="products-grid">
+                        {products.map((product) => (
+                            <div key={product.id} className="product-card">
+                                <div className="product-media">
+                                    <img 
+                                        src={product.image} 
+                                        alt={product.name} 
+                                        className="product-image" 
+                                        loading="lazy"
+                                    />
+                                </div>
+                                <div className="product-content">
+                                    <h2 className="product-title">{product.name}</h2>
+                                    <p className="product-price">{product.price} €</p>
+                                    <p className="product-description">{product.description}</p>
+
+                                    <div className="product-form">
+                                        <div className="form-group">
+                                            <label>Daudzums:</label>
+                                            <div className="quantity-control">
+                                                <button 
+                                                    onClick={() => handleQuantityChange(product.id, -1)} 
+                                                    className="quantity-btn decrease"
+                                                    aria-label="Samazināt daudzumu"
+                                                >
+                                                    −
+                                                </button>
+                                                <span className="quantity-display">{quantities[product.id] || 1}</span>
+                                                <button 
+                                                    onClick={() => handleQuantityChange(product.id, 1)} 
+                                                    className="quantity-btn increase"
+                                                    aria-label="Palielināt daudzumu"
+                                                >
+                                                    +
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <button 
+                                            className={`add-to-cart-btn ${loading ? 'loading' : ''}`}
+                                            onClick={() => addToCart(product)}
+                                            disabled={loading}
+                                        >
+                                            {loading ? 'Pievieno...' : 'Pievienot grozam'}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Footer */}
+            <footer className="site-footer">
+                <div className="container">
+                    <p>© 2025 Sun Aroma</p>
+                </div>
+            </footer>
         </div>
     );
 }

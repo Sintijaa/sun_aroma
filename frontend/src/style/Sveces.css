@@ -1,142 +1,530 @@
+/* Modern Sveces Styles - Melns/Balts ar bordo akcentiem */
 :root {
-    --primary-color: #008CBA;
-    --hover-primary-color: #0073a5;
-    --accent-color: #4CAF50;
-    --hover-accent-color: #388E3C;
-    --text-color: #020202;
-    --light-text-color: #888;
-    --background-color: #f7f7f7;
-    --shadow-color: rgba(0, 0, 0, 0.05);
-    --hover-shadow-color: rgba(0, 0, 0, 0.1);
+    --primary-color: #8B0000; /* Bordo */
+    --primary-light: #C41E3A; /* Gaišāks bordo */
+    --primary-dark: #640000; /* Tumšāks bordo */
+    --text-light: #ffffff;  /* Balts */
+    --text-dark: #222222;   /* Gandrīz melns */
+    --background-light: #f8f8f8; /* Ļoti gaišs pelēks */
+    --background-dark: #e0e0e0; /* Gaišs pelēks */
+    --background-black: #1a1a1a; /* Gandrīz melns */
+    --success-color: #4caf50;
+    --error-color: #f44336;
+    --border-radius: 4px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s ease;
 }
 
-.sveces-container {
-    padding: 10px;
-    text-align: center;
-}
-.home-button {
-    position: absolute; /* Fiksē pogas atrašanās vietu */
-    top: 20px; /* Attālums no lapas augšas */
-    left: 20px; /* Attālums no kreisās malas */
-    background-color: #3d3c3c;
-    color: rgb(255, 254, 254);
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    transition: background-color 0.3s ease;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.home-button:hover {
-    background-color: #8a7d7d;
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    background-color: var(--background-light);
+    line-height: 1.4;
 }
 
-.galerija {
+.container {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+.site-header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
 }
 
-
-.svece-item {
-    background-color: #dddddd;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    max-width: 400px;
-    text-align: left;
-    transition: transform 0.3s ease;
+.logo-container {
+    flex: 0 0 auto;
 }
 
-
-.svece-item:hover {
-    transform: translateY(-10px);
+.logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
 }
 
-.svece-bilde {
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: -0.5px;
+}
+
+.navigation-container {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.main-nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+    padding: 0.3rem 0;
+    font-size: 0.9rem;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-link:hover::after {
     width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-.svece-bilde:hover {
-    opacity: 0.9;
 }
 
-.svece-info {
-    padding: 10px 0;
+.cart-container {
+    flex: 0 0 auto;
 }
 
-.svece-name {
-    font-size: 2em;
-    color: var(--text-color);
-    margin-bottom: 8px;
+.cart-link {
+    position: relative;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.cart-icon {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
     font-weight: 600;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+}
+
+.menu-icon, .menu-icon::before, .menu-icon::after {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-dark);
+    transition: var(--transition);
+}
+
+.menu-icon {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.menu-icon::before, .menu-icon::after {
+    content: '';
+    left: 0;
+}
+
+.menu-icon::before {
+    top: -8px;
+}
+
+.menu-icon::after {
+    bottom: -8px;
+}
+
+/* Banner Styles */
+.page-banner {
+    background-color: var(--background-black);
+    color: var(--text-light);
+    padding: 4rem 1rem;
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('../assets/svece1.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 1;
+}
+
+.page-banner h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.page-banner p {
+    font-size: 1rem;
+    opacity: 0.9;
+    max-width: 500px;
+    margin: 0 auto;
+    letter-spacing: 0.5px;
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--border-radius);
+    color: var(--text-light);
+    font-weight: 500;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    animation: slideIn 0.3s forwards;
+    font-size: 0.9rem;
+}
+
+.notification.success {
+    background-color: var(--success-color);
+}
+
+.notification.error {
+    background-color: var(--error-color);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Products Section */
+.sveces-section {
+    padding: 3rem 0;
+}
+
+.sveces-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.svece-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.svece-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.svece-media {
+    position: relative;
+    overflow: hidden;
+    height: 350px;
+}
+
+.svece-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.svece-card:hover .svece-image {
+    transform: scale(1.05);
+}
+
+.svece-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.svece-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+    color: var(--text-dark);
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 .svece-price {
-    color: #080808;
-    font-size: 1.3em;
-    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
 }
 
 .svece-description {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-bottom: 5px;
-    color: #080808;
+    margin-bottom: 1rem;
+    color: #666;
+    font-size: 0.85rem;
 }
 
-.add-to-cart-button {
-    background-color: #8a7d7d;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 8px; /* Apaļāka poga */
-    cursor: pointer;
-    font-size: 1.1em;
-    transition: background-color 0.4s, transform 0.3s ease;
-}
-.add-to-cart-button:hover {
-    background-color: #5c5454;
-    transform: translateY(-3px); /* Neliela animācija uz augšu */
+.svece-form {
+    margin-top: auto;
 }
 
+.form-group {
+    margin-bottom: 1rem;
+}
 
-.home-button, .view-cart-button {
-    display: inline-block;
-    margin: 8px 12px;
-    padding: 10px 18px;
-    background-color: var(--accent-color);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 6px;
+.form-group label {
+    display: block;
+    margin-bottom: 0.3rem;
     font-weight: 600;
-    transition: background-color 0.3s ease;
+    color: var(--text-dark);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.home-button:hover, .view-cart-button:hover {
-    background-color: var(--hover-accent-color);
+.select-wrapper {
+    position: relative;
 }
-@media (max-width: 900px) {
-    .galerija {
-        gap: 15px;
-        justify-content: center; /* Vienmērīgs izvietojums mazākām ierīcēm */
+
+.select-wrapper::after {
+    content: '▼';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 0.7rem;
+    color: var(--text-dark);
+}
+
+select {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    background-color: white;
+    font-size: 0.9rem;
+    appearance: none;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.2);
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    width: fit-content;
+}
+
+.quantity-btn {
+    background: none;
+    border: none;
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.quantity-btn:hover {
+    background-color: var(--background-dark);
+}
+
+.quantity-display {
+    padding: 0 1rem;
+    font-weight: 600;
+    min-width: 36px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.add-to-cart-btn {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.8rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+.add-to-cart-btn.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--background-black);
+    color: var(--text-light);
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    .sveces-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
     }
-
-    .svece-item {
-        max-width: 250px;
+    
+    .svece-media {
+        height: 320px;
     }
 }
 
-@media (max-width: 600px) {
-    .galerija {
-        flex-direction: column; /* Vertikāls izvietojums ļoti šauriem ekrāniem */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0.75rem;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .main-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        flex-direction: column;
         align-items: center;
+        padding: 1.25rem;
+        gap: 1.25rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
+    
+    .nav-open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .page-banner h1 {
+        font-size: 2.2rem;
+    }
+    
+    .page-banner p {
+        font-size: 0.95rem;
+    }
+    
+    .sveces-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .svece-media {
+        height: 280px;
+    }
+}
 
-    .home-button, .view-cart-button {
-        font-size: 1em;
-        padding: 10px 15px;
+@media (max-width: 480px) {
+    .header-container {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    .logo-text {
+        font-size: 1.3rem;
+    }
+    
+    .sveces-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-banner {
+        padding: 2.5rem 1rem;
+    }
+    
+    .page-banner h1 {
+        font-size: 1.8rem;
+    }
+    
+    .notification {
+        right: 10px;
+        left: 10px;
+        width: auto;
+    }
+    
+    .svece-media {
+        height: 250px;
+    }
+    
+    .svece-content {
+        padding: 1.25rem;
     }
 }

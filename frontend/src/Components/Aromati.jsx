@@ -12,6 +12,10 @@ function Aromati() {
     const [sessionId, setSessionId] = useState(null);
     const [selectedAromats, setSelectedAromats] = useState({});
     const [quantities, setQuantities] = useState({});
+    const [loading, setLoading] = useState(false);
+    const [notification, setNotification] = useState({ show: false, message: '', type: '' });
+    const [debug, setDebug] = useState(null);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         let existingSessionId = Cookies.get('session_id');
@@ -26,31 +30,58 @@ function Aromati() {
         setCartCount(initialCartCount);
     }, []);
 
+    const showNotification = (message, type = 'success') => {
+        setNotification({ show: true, message, type });
+        setTimeout(() => {
+            setNotification({ show: false, message: '', type: '' });
+        }, 3000);
+    };
+
     const addToCart = async (item) => {
         if (!sessionId) {
-            console.error('Sesijas ID nav iestatīts');
+            showNotification('Sesijas ID nav iestatīts', 'error');
             return;
         }
+
+        setLoading(true);
 
         const productData = {
             product_id: parseInt(item.id, 10),
             quantity: quantities[item.id] || 1,
             session_id: sessionId,
             price: parseFloat(item.price),
-            // selected_aromats: selectedAromats[item.id] || item.name,
+            selected_aromats: selectedAromats[item.id] || item.aromati[0],
             image: item.alt
         };
 
-        console.log(productData);
+        setDebug(productData);
 
         try {
-            await axios.post('http://127.0.0.1:8000/api/cart', productData);
+            console.log('Sending cart data:', productData);
+            
+            const response = await axios.post('http://127.0.0.1:8000/api/cart', productData);
+            console.log('Server response:', response.data);
+            
             const updatedCartCount = cartCount + (quantities[item.id] || 1);
             setCartCount(updatedCartCount);
             localStorage.setItem('cartCount', updatedCartCount.toString());
-
+            showNotification('Prece pievienota grozam!');
         } catch (error) {
-            console.error('Kļūda pievienojot grozam', error.response ? error.response.data : error.message);
+            console.error('Kļūda pievienojot grozam:', error);
+            if (error.response) {
+                console.error('Response data:', error.response.data);
+                console.error('Response status:', error.response.status);
+                
+                let errorMessage = 'Kļūda pievienojot grozam';
+                if (error.response.data && error.response.data.message) {
+                    errorMessage = error.response.data.message;
+                }
+                showNotification(errorMessage, 'error');
+            } else {
+                showNotification('Neizdevās savienoties ar serveri', 'error');
+            }
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -71,89 +102,171 @@ function Aromati() {
     const products = [
         {
             id: 9,
-            name: "Mājas aromāts",
+            name: "Mājas aromāts 50ml",
             alt: "aromats1",
             image: aromats1,
-            description: "Mājas aromāts 50ml",
+            description: "Sastāvs: Augu izcelsmes bāze un smaržeļļas",
             price: "10.00",
-            aromati: ["Ābols", "Plūme un rabarbers", "Tabaka un dzinatrs", "Mellene", "Upene", "Ķirsis", "Ambra", "Peonija" ] 
+            aromati: ["Ābols", "Plūme un rabarbers", "Tabaka un dzintars", "Mellene", "Upene", "Ķirsis", "Ambra", "Peonija"] 
         },
         {
             id: 10,
             name: "Izsmidzināms mājas aromāts",
             alt: "aromats2",
             image: aromats2,
-            description: "Izsmidzināms mājas aromāts ar 11 dažādiem aromātiem",
+            description: "Sastāvs: Augu izcelsmes bāze un smaržeļļas",
             price: "6.00",
-            aromati: ["Ābols", "Plūme un rabarbers", "Tabaka un dzinatrs", "Mellene", "Upene", "Ķirsis", "Ambra", "Peonija" ]
+            aromati: ["Ābols", "Plūme un rabarbers", "Tabaka un dzintars", "Mellene", "Upene", "Ķirsis", "Ambra", "Peonija"]
         },
         {
             id: 11,
             name: "Skapja / automašīnas aromāts",
             alt: "aromats3",
             image: aromats3,
-            description: "Aromāts ko vari iekarināt automašīnā vai skapī",
+            description: "Sastāvs: Augu izcelsmes bāze un smaržeļļas",
             price: "4.00",
-            aromati: ["Ābols", "Plūme un rabarbers", "Tabaka un dzinatrs", "Mellene", "Upene", "Ķirsis", "Ambra", "Peonija" ]
+            aromati: ["Ābols", "Plūme un rabarbers", "Tabaka un dzinatrs", "Mellene", "Upene", "Ķirsis", "Ambra", "Peonija"]
         }
     ];
 
     return (
-        <div className="aromati-container">
-            <Link to="/shop" className="home-button">Sākums</Link>
-            <Link to="/grozs" className="view-cart-button">Skatīt grozu ({cartCount})</Link>
-
-            <h1>Mājas un automašīnas aromāti</h1>
-            <div className="galerija">
-                {products.map((product) => (
-                    <div key={product.id} className="aromats-item">
-                        {/* {product.name === "Skapja / automašīnas aromāts" && (
-                            <div className="sold-out-circle">Izpārdots</div>
-                        )} */}
-                        <img src={product.image} alt={product.name} className="aromats-bilde" />
-                        <div className="aromats-info">
-                            <p className="aromats-apraksts">{product.name}</p>
-                            <p className="aromats-price">{product.price}</p>
-                            <p className="aromats-description">{product.description}</p>
-
-                            <select
-                                className="aromats-select"
-                                value={selectedAromats[product.id] || product.name}
-                                onChange={(e) => handleAromatsChange(product.id, e.target.value)}
-                            >
-                                {product.aromati.map((aromats, index) => (
-                                    <option key={index} value={aromats}>{aromats}</option>
-                                ))}
-                            </select>
-
-                            <div className="quantity-container">
-                                <div className="quantity-controls">
-                                    <button 
-                                        onClick={() => handleQuantityChange(product.id, -1)} 
-                                        className="quantity-button"
-                                    >
-                                        -
-                                    </button>
-                                    <span className="quantity-display">{quantities[product.id] || 1}</span>
-                                    <button 
-                                        onClick={() => handleQuantityChange(product.id, 1)} 
-                                        className="quantity-button"
-                                    >
-                                        +
-                                    </button>
-                                </div>
-                                <button 
-                                    className="add-to-cart-button" 
-                                    onClick={() => addToCart(product)}
-                                    // disabled={product.name === "Skapja / automašīnas aromāts"}
-                                >
-                                    Pievienot grozam
-                                </button>
-                            </div>
-                        </div>
+        <div className="aromati-page">
+            {/* Modern header with responsive navigation */}
+            <header className="site-header">
+                <div className="header-container">
+                    <div className="logo-container">
+                        <Link to="/" className="logo-link">
+                            <span className="logo-text">Sun Aroma</span>
+                        </Link>
                     </div>
-                ))}
-            </div>
+                    
+                    <div className="navigation-container">
+                        <button 
+                            className="menu-toggle"
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            aria-label="Toggle menu"
+                        >
+                            <span className="menu-icon"></span>
+                        </button>
+                        
+                        <nav className={`main-nav ${isMenuOpen ? 'nav-open' : ''}`}>
+                            <Link to="/" className="nav-link">Sākums</Link>
+                            <Link to="/shop" className="nav-link">Veikals</Link>
+                            <Link to="/contact" className="nav-link">Kontakti</Link>
+                        </nav>
+                    </div>
+                    
+                    <div className="cart-container">
+                        <Link to="/grozs" className="cart-link">
+                            <span className="cart-icon">🛒</span>
+                            <span className="cart-count">{cartCount}</span>
+                        </Link>
+                    </div>
+                </div>
+            </header>
+
+            {/* Notification system */}
+            {notification.show && (
+                <div className={`notification ${notification.type}`}>
+                    {notification.message}
+                </div>
+            )}
+
+            {/* Page banner */}
+            <section className="page-banner">
+                <div className="banner-content">
+                    <h1>Mājas un automašīnas aromāti</h1>
+                    <p>Izvēlieties savu ideālo aromātu mūsu kolekcijā</p>
+                </div>
+            </section>
+
+            {/* Debug information - only shown during development */}
+            {debug && (
+                <div className="debug-info">
+                    <h3>Debug Information (Remove in production)</h3>
+                    <pre>{JSON.stringify(debug, null, 2)}</pre>
+                </div>
+            )}
+
+            {/* Product listing */}
+            <section className="products-section">
+                <div className="container">
+                    <div className="products-grid">
+                        {products.map((product) => (
+                            <div key={product.id} className="product-card">
+                                <div className="product-media">
+                                    <img 
+                                        src={product.image} 
+                                        alt={product.name} 
+                                        className="product-image" 
+                                        loading="lazy"
+                                    />
+                                </div>
+                                <div className="product-content">
+                                    <h2 className="product-title">{product.name}</h2>
+                                    <p className="product-price">{product.price} €</p>
+                                    <p className="product-description">{product.description}</p>
+
+                                    <div className="product-form">
+                                        <div className="form-group">
+                                            <label htmlFor={`aroma-select-${product.id}`}>
+                                                Izvēlieties aromātu:
+                                            </label>
+                                            <div className="select-wrapper">
+                                                <select
+                                                    id={`aroma-select-${product.id}`}
+                                                    value={selectedAromats[product.id] || product.aromati[0]}
+                                                    onChange={(e) => handleAromatsChange(product.id, e.target.value)}
+                                                >
+                                                    {product.aromati.map((aromats, index) => (
+                                                        <option key={index} value={aromats}>{aromats}</option>
+                                                    ))}
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label>Daudzums:</label>
+                                            <div className="quantity-control">
+                                                <button 
+                                                    onClick={() => handleQuantityChange(product.id, -1)} 
+                                                    className="quantity-btn decrease"
+                                                    aria-label="Samazināt daudzumu"
+                                                >
+                                                    −
+                                                </button>
+                                                <span className="quantity-display">{quantities[product.id] || 1}</span>
+                                                <button 
+                                                    onClick={() => handleQuantityChange(product.id, 1)} 
+                                                    className="quantity-btn increase"
+                                                    aria-label="Palielināt daudzumu"
+                                                >
+                                                    +
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <button 
+                                            className={`add-to-cart-btn ${loading ? 'loading' : ''}`}
+                                            onClick={() => addToCart(product)}
+                                            disabled={loading}
+                                        >
+                                            {loading ? 'Pievieno...' : 'Pievienot grozam'}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Footer */}
+            <footer className="site-footer">
+                <div className="container">
+                    <p>© 2025 Sun Aroma</p>
+                </div>
+            </footer>
         </div>
     );
 }

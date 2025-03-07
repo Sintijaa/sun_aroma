@@ -1,370 +1,211 @@
-:root {
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #d6cfd6;
+/* App.css - Updated styles for the integrated Home component */
+
+/* Overall reset and global styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  background-color: #c0c0c7;
-}
-
-.background {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('./assets/sakuma_bilde.jpeg');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  filter: brightness(80%);
-}
-.overlay {
-  position: absolute; /* Nodrošina, ka saturs ir virs fona */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.content {
-  text-align: center;
-  padding: 20px 40px;
-  border-radius: 12px;
-  background-color: rgba(0, 0, 0, 0.5); /* Pārklājums ar nelielu tumšu caurspīdību */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-
-h1 {
-  font-size: 6em; /* Lielāks izmērs uzrakstam */
-  color: #f3eeee;
-  font-weight: bold;
-  text-shadow: 0px 4px 15px rgba(177, 177, 177, 0.5);
-  margin-bottom: 40px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase; /* Lielie burti */
- 
- 
-}
-
-.button-container {
-  display: flex;
-  flex-direction: column; /* Pogas vertikāli */
-  align-items: center; /* Centrējam pogas */
-}
-
-.custom-button {
-  margin-top: 20px; /* Attālums starp pogām */
-  border-radius: 25px;
-  border: none;
-  padding: 15px 40px;
-  font-size: 1.3em;
-  font-weight: 600;
-  background-color: #8a7d7d;
-  color: white;
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.custom-button:hover {
-  background-color: #807f7f;
-  transform: scale(1.1);
-}
-
-.custom-button:active {
-  transform: scale(1);
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
-}
-.scroll-down-arrow {
-  position: absolute;
-  bottom: 20px;
-  font-size: 32px;
-  color: white;
-  cursor: pointer;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
-}
-.about-container {
-  padding: 50px;
-  text-align: center;
-  background-color: #fafafa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
   color: #333;
 }
 
-.about-container h1 {
-  font-size: 36px;
-  color: #6a1b9a;
-}
-
-.about-container p {
-  font-size: 18px;
-  margin-top: 20px;
-  line-height: 1.6;
-}
-
-
-@media (max-width: 768px) {
-  .logo {
-    font-size: 2.5em; /* Samazināts teksta izmērs mobilajām ierīcēm */
-  }
-
-  .custom-button {
-    padding: 12px 30px;
-    font-size: 1.1em;
-  }
-
-  .scroll-down-arrow {
-    font-size: 24px; /* Mazāks izmērs mobilajām ierīcēm */
-  }
-}
-@keyframes logo-fade-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.custom-button {
-  margin-top: 20px;
-  border-radius: 25px;
-  border: none;
-  padding: 15px 40px;
-  font-size: 1.3em;
-  font-weight: 600;
-  background-color: #8a7d7d;
-  color: white;
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.custom-button:hover {
-  background-color: #807f7f;
-  transform: scale(1.1);
-}
-
-.custom-button:active {
-  transform: scale(1);
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 768px) {
-  .logo {
-    font-size: 3.5em;
-  }
-
-  .custom-button {
-    padding: 12px 30px;
-    font-size: 1.1em;
-  }
-}
-.logo-container {
-  display: flex;
-  align-items: center;
-  position: absolute; /* Izmantojam absolūtu pozicionēšanu */
-  top: 20px; /* Attālums no augšas */
-  left: 20px; /* Attālums no kreisās puses */
-  z-index: 1000; /* Pārliecināmies, ka logo ir virs citiem elementiem */
-}
-
-.logo-image {
-  width: 300px; /* Izmērs var mainīties atbilstoši vajadzībām */
-  height: auto; /* Saglabā proporcijas */
-  margin-right: 80px; /* Atstarpe starp logo un tekstu */
-}
-
-.logo {
-  font-size: 5.5em; /* Lielāks nosaukuma izmērs */
-  color: #f3eeee;
-  font-weight: bold;
-  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-}
-
-.custom-button {
-  margin-top: 100px; /* Samazinam attālumu no logo līdz pogām */
-  border-radius: 25px;
-  border: none;
-  padding: 15px 40px;
-  font-size: 1.3em;
-  font-weight: 600;
-  background-color: #8a7d7d;
-  color: white;
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.custom-button:hover {
-  background-color: #807f7f;
-  transform: scale(1.1);
-}
-
-.custom-button:active {
-  transform: scale(1);
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
-}
-
-.logo-container {
+/* Home hero section */
+.home-hero {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f9f9f9;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px; /* Attālums starp logo un pogām */
-  position: relative;
+  padding: 50px 20px;
 }
 
-.logo-image {
-  width: 100px; /* Izmērs var mainīties atbilstoši vajadzībām */
-  height: auto; /* Saglabā proporcijas */
-  margin-right: 20px; /* Atstarpe starp logo un tekstu */
+.home-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+  align-items: center;
 }
 
-.logo {
-  font-size: 5em; /* Lielāks nosaukuma izmērs */
-  color: #f3eeee;
-  font-weight: bold;
-  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-  margin-bottom: 40px; /* Attālums starp nosaukumu un pogām */
-  padding: 20px; /* Iekšējā atstarpe ap tekstu */
-  background-color: rgba(0, 0, 0, 0.5); /* Tumšs caurspīdīgs fons */
-  border-radius: 10px; /* Noapaļotas malas */
+.home-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
 }
 
-.content {
+.home-image {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.home-image:hover {
+  transform: scale(1.02);
+}
+
+.home-text {
+  flex: 1;
+  padding: 20px;
   text-align: center;
-  padding: 20px 40px;
-  border-radius: 12px;
+  max-width: 600px;
+}
+
+.home-text h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  color: #333;
+  font-weight: 700;
+}
+
+.home-divider {
+  width: 60px;
+  height: 3px;
+  background-color: #690505;
+  margin: 20px auto;
+}
+
+.home-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.highlight {
+  font-weight: 700;
+  color: #690505;
+}
+
+/* Button styles */
+.home-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.home-buttons button {
   background-color: transparent;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.button-container {
-  display: flex;
-  flex-direction: column; /* Pogas vertikāli */
-  align-items: center; /* Centrējam pogas */
-}
-
-.custom-button {
-  margin-top: 20px; /* Attālums starp pogām */
-  border-radius: 25px;
-  border: none;
-  padding: 15px 40px;
-  font-size: 1.3em;
-  font-weight: 600;
-  background-color: #918f8f;
-  color: white;
+  color: #555;
+  border: 2px solid #690505;
+  padding: 12px 25px;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-}
-button {
-  margin-top: 20px;
+  transition: all 0.3s ease;
   border-radius: 30px;
-  border: none;
-  padding: 15px 50px;
-  font-size: 1.5em;
-  font-weight: 600;
-  background-color: #887d79;
-  color: rgb(26, 24, 24);
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+  min-width: 180px;
+  font-weight: 500;
 }
 
-button:hover {
-  background-color: #948b8b;
-  transform: scale(1.1);
+.home-buttons button:hover {
+  background-color: rgba(241, 239, 237, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-button:active {
-  transform: scale(1);
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+.shop-button {
+  background-color: #690505 ;
+  color: white;
+  border: none ;
+  font-weight: 600 ;
 }
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 3em; /* Mazāks teksts mobilajā versijā */
+.shop-button:hover {
+  background-color: #ffffff !important;
+}
+
+/* Social links */
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background-color: #690505;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (min-width: 768px) {
+  .home-content {
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
   }
-
-  button {
-    padding: 12px 30px;
-    font-size: 1.2em;
+  
+  .home-text {
+    text-align: left;
+  }
+  
+  .home-divider {
+    margin-left: 0;
+    margin-right: auto;
+  }
+  
+  .home-buttons {
+    align-items: flex-start;
+  }
+  
+  .social-links {
+    justify-content: flex-start;
   }
 }
-@media (max-width: 768px) {
-  .logo-image {
-    width: 60px; /* Samazināts izmērs mobilajām ierīcēm */
-  }
 
-  .logo {
-    font-size: 2.5em; /* Samazināts teksta izmērs mobilajām ierīcēm */
+@media (min-width: 992px) {
+  .home-buttons {
+    flex-direction: row;
+    gap: 20px;
   }
-
-  .custom-button {
-    padding: 12px 30px;
-    font-size: 1.1em;
+  
+  .home-buttons button {
+    min-width: 150px;
   }
 }
 
-.about-container {
-  padding: 50px;
-  text-align: center;
-}
-
-.about-container h1 {
-  font-size: 36px;
-  color: #6a1b9a;
-}
-
-.about-container p {
-  font-size: 18px;
-  margin-top: 20px;
-  line-height: 1.6;
-  color: #333;
-}
-.par-mums-button {
-  position: fixed; /* Fiksēta pozīcija, lai poga vienmēr būtu redzama apakšā */
-  bottom: 20px; /* Novietota 20px virs lapas apakšas */
-  left: 50%; /* Centrujot pogu horizontāli */
-  transform: translateX(-50%); /* Precīza centrošana */
-  background-color: #000; /* Melna fona krāsa */
-  color: #fff; /* Balts teksts */
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease; /* Pievienots smooth hover efekts */
-}
-
-.par-mums-button:hover {
-  background-color: #333; /* Tumšāks melns, kad uzbrauc ar kursoru */
+@media (max-width: 480px) {
+  .home-hero {
+    padding: 30px 15px;
+  }
+  
+  .home-text h1 {
+    font-size: 2.2rem;
+  }
+  
+  .home-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .home-buttons button {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    min-width: 150px;
+  }
 }

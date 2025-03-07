@@ -1,186 +1,309 @@
-/* Galvenais virsraksts */
-h1 {
-  text-align: center;
-  margin-bottom: 50px;
-  font-size: 4em; /* Palielināts fonta izmērs */
-  color: #222222; /* Varat mainīt krāsu pēc izvēles */
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Pievienots neliels ēnojums */
+/* Modern Shop Styles */
+:root {
+    --primary-color: #8B0000; 
+    --primary-light: #750d1e; 
+    --primary-dark: #640000; 
+    --accent-color: #ffffff;
+    --text-light: #ffffff;  
+    --text-dark: #fdfdfd;   
+    --background-light: #f8f8f8; 
+    --background-dark: #e0e0e0; 
+    --border-radius: 4px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s ease;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* Attēlu galerija */
-.image-gallery {
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-dark);
+  background-color: var(--background-light);
+  line-height: 1.6;
+}
+
+.shop-container {
   display: flex;
-  justify-content: center;
-  gap: 40px; /* Atstarpe starp bildēm */
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.image-item {
+/* Header Styles */
+.shop-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 5%;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+
+.logo-link {
+  text-decoration: none;
+  color: var(--text-light);
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.main-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--accent-color);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-color);
+}
+
+.cart-link {
+  display: flex;
+  align-items: center;
+  color: var(--text-light);
+  text-decoration: none;
+  position: relative;
+}
+
+.cart-icon {
+  font-size: 1.5rem;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: var(--accent-color);
+  color: var(--text-dark);
+  font-size: 0.75rem;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-icon {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-light);
+  position: relative;
+  transition: var(--transition);
+}
+
+.menu-icon::before,
+.menu-icon::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-light);
+  transition: var(--transition);
+}
+
+.menu-icon::before {
+  top: -8px;
+}
+
+.menu-icon::after {
+  bottom: -8px;
+}
+
+/* Main Content Styles */
+.shop-main {
+  flex: 1;
+  padding: 2rem 5%;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: var(--primary-dark);
+  margin-bottom: 2rem;
   text-align: center;
   position: relative;
-  display: inline-block;
-  perspective: 1000px;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--accent-color);
+}
+
+/* Categories Grid */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.category-card {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  position: relative;
+  height: 320px;
+  text-decoration: none;
+  color: var(--text-light);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.category-image-container {
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
-.image-item img {
-  width: 250px;
-  height: 250px;
-  transition: transform 0.6s ease, box-shadow 0.6s ease;
-  border-radius: 20% 30% 40% 30%; /* Stūri ar dažāda izmēra ieapaļojumiem */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transform: rotate(0deg); /* Sākotnējā pozīcija */
-}
-
-.image-item img:hover {
-  transform: scale(1.1) rotate(10deg); /* Palielinājums un pagriešanās par 10 grādiem */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-.image-item p {
-  margin-top: 10px;
-  font-size: 1.4em;
-  text-shadow: 4px 4px 6px rgba(75, 74, 74, 0.8);
-}
-
-/* Pogu stils */
-.button {
-  position: relative;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  outline: none;
-  font-size: 18px;
-  margin: 1em 0.8em;
-}
-.top-left-button {
-  position: absolute;
-  top: 40px; /* Pārvietots zemāk */
-  left: 10px;
-}
-.home-button:hover {
-  background-color: #45a049; /* Tumšāka krāsa uz hover */
-}
-.home-button {
-  background-color: #3b3b3b;
-  color: white;
-  padding: 10px 20px; /* Pievienots pamatam */
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 5px;
-  margin-top: 30px; /* Pievienots augšējais atstarpe, ja nepieciešams */
-  transition: background-color 0.3s ease; /* Pievienots pārejas efekts */
-}
-@media (max-width: 768px) {
-  .home-button {
-    width: 100%; /* Poga aizņem visu platumu */
-    padding: 12px; /* Palielināts augstums pogai */
-    font-size: 18px; /* Lielāks fonta izmērs mobilajā versijā */
-    margin-top: 20px; /* Samazināts augšējais atstarpe */
-  }
-}
-.shop-container {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.shop-title {
-  text-align: center;
-  font-size: 36px;
-  margin-bottom: 30px;
-  color: #333;
-}
-
-.items-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.item-card {
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  text-align: center;
-  transition: transform 0.2s ease-in-out;
-}
-
-.item-card:hover {
-  transform: scale(1.05);
-}
-
-.item-image {
+.category-image {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 15px;
+  transition: var(--transition);
 }
 
-.item-name {
-  font-size: 18px;
-  color: #333;
-}
-/* Noņemam fonus visiem uzrakstiem */
-h1, h2, h3, h4, h5, h6, p, span, a {
-  background-color: transparent; /* Noņem fonu */
+.category-card:hover .category-image {
+  transform: scale(1.1);
 }
 
-
-/* Mobilā versija */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 1.8em;
-    margin-bottom: 15px;
-  }
-
-  .image-gallery {
-    display: block; /* Attēli zem viens otra */
-    gap: 20px; /* Mazāka atstarpe */
-    margin: 0 auto;
-  }
-
-  .image-item img {
-    width: 200px; /* Samazinām attēla izmēru mobilajās ierīcēs */
-    height: 200px;
-    border-radius: 20% 25% 30% 25%; /* Saglabājam ieapaļojumu, bet nedaudz samazinām */
-  }
-
-  .image-item p {
-    font-size: 1.2em; /* Mazāks teksta izmērs */
-    margin-top: 8px;
-  }
-
-  .button {
-    font-size: 16px;
-    margin: 0.8em 0.5em;
-  }
-
-  .home-button {
-    padding: 8px 15px; /* Mazāks pogas izmērs mobilajā versijā */
-    font-size: 14px;
-  }
-}
-
-.top-right-button {
+.category-overlay {
   position: absolute;
-  top: 20px; /* Adjust as necessary */
-  right: 20px; /* Adjust as necessary */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.cart-button {
-  background-color: #635857; /* Example color */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 15px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.category-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
-.cart-button:hover {
-  background-color: #181818; /* Darker shade on hover */
+.category-cta {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: var(--transition);
+  background-color: var(--accent-color);
+  color: var(--text-dark);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-weight: 500;
+}
+
+.category-card:hover .category-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Footer Styles */
+.shop-footer {
+  background-color: var(--primary-dark);
+  color: var(--text-light);
+  padding: 1.5rem 5%;
+  text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .shop-header {
+    padding: 1rem;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+  
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--primary-color);
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+  }
+  
+  .nav-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .categories-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: a.5rem;
+  }
+  
+  .category-card {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
 }
