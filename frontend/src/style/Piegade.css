@@ -1,42 +1,174 @@
-/* src/style/piegade.css */
+/* Galvenās krāsas */
+:root {
+  --primary-color: #8B0000; /* Bordo krāsa */
+  --primary-light: #D7B6B6; /* Gaiši bordo */
+  --white: #ffffff;
+  --light-gray: #f5f5f5;
+  --gray: #e0e0e0;
+  --dark-gray: #333333;
+}
 
+/* Pamata stils */
 .piegade-container {
-  padding: 20px;
+  max-width: 900px;
   margin: 0 auto;
-  max-width: 800px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  font-family: Arial, sans-serif;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .piegade-title {
   text-align: center;
-  font-size: 2em;
-  color: #333;
-  margin-bottom: 20px;
-  font-family: 'Arial', sans-serif;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 700;
 }
 
-.piegade-details {
-  margin-bottom: 20px;
-  background-color: #fff;
-  padding: 15px;
+/* Piegādes opciju stils */
+.piegade-options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.piegade-option {
+  background-color: var(--white);
+  border: 2px solid var(--gray);
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  position: relative;
 }
 
-.piegade-details h2 {
-  font-size: 1.5em;
-  color: #555;
+.piegade-option::before {
+  content: "";
+  width: 4px;
+  height: 100%;
+  background-color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
 }
 
-.piegade-details ul {
-  list-style-type: none;
+.piegade-option-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--gray);
+}
+
+.piegade-option-header h2 {
+  font-size: 22px;
+  color: var(--dark-gray);
+  margin: 0;
+}
+
+.piegade-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* Detaļu stils */
+.piegade-details {
+  padding-left: 10px;
+}
+
+.piegade-details h3 {
+  font-size: 18px;
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.piegade-schedule {
+  list-style: none;
   padding: 0;
+  margin: 0 0 15px 0;
 }
 
-.piegade-details li {
+.piegade-schedule li {
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+}
+
+.piegade-schedule li span {
+  font-weight: 600;
+}
+
+.piegade-info, .piegade-address, .piegade-note {
   margin: 10px 0;
-  font-size: 1.1em;
-  color: #333;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--dark-gray);
+}
+
+.piegade-address, .piegade-note {
+  font-style: italic;
+}
+
+.piegade-info-list {
+  padding-left: 20px;
+  margin: 0 0 15px 0;
+}
+
+.piegade-info-list li {
+  margin-bottom: 8px;
+  color: var(--dark-gray);
+}
+
+.piegade-back-button-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.piegade-back-button {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 6px;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.piegade-back-button:hover {
+  background-color: #6B0000; /* Tumšāks bordo */
+  text-decoration: none;
+  color: var(--white);
+}
+
+/* Responsīvais dizains */
+@media (max-width: 768px) {
+  .piegade-container {
+    padding: 20px 15px;
+  }
+  
+  .piegade-title {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  
+  .piegade-option-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .piegade-price {
+    margin-top: 8px;
+  }
+  
+  .piegade-schedule li {
+    flex-direction: column;
+  }
 }

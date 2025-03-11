@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useRef } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
@@ -12,10 +11,10 @@ import Aromati from './Components/Aromati';
 import Ziepes from './Components/Ziepes';
 import Header from './Components/Header';
 import Burti from './Components/Burti';
-import ParMums from './Components/ParMums'; 
 import Grozs from './Components/Grozs.jsx';
+import Piegade from './Components/Piegade.jsx';
 import SuccessPage from './Components/Success.jsx';
-import EsAttels from './assets/es.jpg'; // Path to image - make sure this path is correct
+import EsAttels from './assets/es.jpg'; 
 
 function Home() {
   const navigate = useNavigate();
@@ -91,6 +90,7 @@ function AppRoutes() {
         <Route path="/aromati" element={<Aromati />} />
         <Route path="/ziepes" element={<Ziepes />} />
         <Route path="/burti" element={<Burti />} />
+        <Route path="/piegade" element={<Piegade />} />
         <Route path="/grozs" element={<Grozs />} />
         <Route path="/success" element={<SuccessPage />} />
       </Routes>
