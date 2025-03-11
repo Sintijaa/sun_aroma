@@ -121,7 +121,6 @@ function Auskari() {
                         <nav className={`main-nav ${isMenuOpen ? 'nav-open' : ''}`}>
                             <Link to="/" className="nav-link">Sākums</Link>
                             <Link to="/shop" className="nav-link">Veikals</Link>
-                            <Link to="/contact" className="nav-link">Kontakti</Link>
                         </nav>
                     </div>
                     
