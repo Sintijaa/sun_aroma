@@ -19,26 +19,32 @@ const categories = [
 ];
 
 function Shop() {
+  // Stāvoklis, lai sekotu līdzi preču skaitam iepirkumu grozā
   const [cartItemsCount, setCartItemsCount] = useState(0);
+  // Stāvoklis, lai kontrolētu mobilās izvēlnes redzamību
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Effect hooks izpildās, kad komponents tiek ielādēts
   useEffect(() => {
-    // Get cart count from cookies when component mounts
+    // Iegūst groza preču skaitu no sīkdatnēm, kad komponents tiek ielādēts
     const count = Cookies.get('cart_items_count') || 0;
     setCartItemsCount(Number(count));
   }, []);
 
   return (
     <div className="shop-container">
-      {/* Modern header with responsive navigation */}
+      {/* Moderna galvene ar responsīvu navigāciju */}
       <header className="shop-header">
+        {/* Logotipa sadaļa */}
         <div className="logo-container">
           <Link href="/" className="logo-link">
             <span className="logo-text">Sun Aroma</span>
           </Link>
         </div>
         
+        {/* Navigācijas izvēlne */}
         <div className="navigation-container">
+          {/* Mobilās izvēlnes pārslēgšanas poga */}
           <button 
             className="menu-toggle"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -47,12 +53,14 @@ function Shop() {
             <span className="menu-icon"></span>
           </button>
           
+          {/* Galvenās navigācijas saites - parāda/slēpj atkarībā no isMenuOpen stāvokļa */}
           <nav className={`main-nav ${isMenuOpen ? 'nav-open' : ''}`}>
             <Link href="/" className="nav-link">Sākums</Link>
             <Link href="/shop" className="nav-link active">Veikals</Link>
           </nav>
         </div>
         
+        {/* Iepirkumu grozs ar preču skaitu */}
         <div className="cart-container">
           <Link href="/grozs" className="cart-link">
             <span className="cart-icon">🛒</span>
@@ -61,10 +69,13 @@ function Shop() {
         </div>
       </header>
 
+      {/* Galvenā satura zona */}
       <main className="shop-main">
+        {/* Kategoriju sadaļa ar režģa izkārtojumu */}
         <section className="categories-section">
           <h1 className="section-title">Mūsu kategorijas</h1>
           
+          {/* Produktu kategoriju režģis */}
           <div className="categories-grid">
             {categories.map(category => (
               <Link href={category.path} key={category.id} className="category-card">
@@ -80,14 +91,16 @@ function Shop() {
           </div>
         </section>
         
+        {/* Populāro produktu sadaļa */}
         <section className="featured-section">
           <h2 className="section-title">Populārākie produkti</h2>
           <div className="featured-products">
-            {/* You can add a few featured products here */}
+            {/* Vieta populārākajiem produktiem */}
           </div>
         </section>
       </main>
 
+      {/* Lapas kājene ar autortiesību informāciju */}
       <footer className="shop-footer">
         <p>© 2025 Sun Aroma</p>
       </footer>

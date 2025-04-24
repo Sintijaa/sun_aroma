@@ -14,7 +14,7 @@ import Piegade from './Pages/Piegade';
 import SuccessPage from './Pages/Success';
 
 createInertiaApp({
-    title: (title) => `${title} - Sun Aroma`,
+    title: (title) => `${title} Sun Aroma`,
     resolve: (name) => {
         const pages = {
             'Home': Home,

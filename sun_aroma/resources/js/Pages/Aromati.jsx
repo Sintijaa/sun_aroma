@@ -152,7 +152,7 @@ function Aromati() {
                         <nav className={`main-nav ${isMenuOpen ? 'nav-open' : ''}`}>
                             <Link href="/" className="nav-link">Sākums</Link>
                             <Link href="/shop" className="nav-link">Veikals</Link>
-                            <Link href="/contact" className="nav-link">Kontakti</Link>
+                           
                         </nav>
                     </div>
                     

@@ -27,7 +27,18 @@
     font-size: 1.2em;
     transition: background-color 0.3s ease;
 }
-
+.site-header{
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 1rem 5%;
+background-color: var(--text-light);
+color: var(--text-light);
+position: sticky;
+top: 0;
+z-index: 100;
+box-shadow: var(--shadow);
+}
 .home-button:hover {
     background-color: #8a7d7d;
 }

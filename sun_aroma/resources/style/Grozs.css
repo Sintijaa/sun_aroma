@@ -21,16 +21,18 @@
   }
   
   /* Cart header */
-  .cart-header {
+  .cart-header{
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 1.5rem;
-  }
+    justify-content: space-between;
+    padding: 1rem 5%;
+    background-color: var(--text-light);
+    color: var(--text-light);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
+    }
   
   .cart-header h1 {
     font-size: 2rem;

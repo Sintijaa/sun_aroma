@@ -288,7 +288,7 @@ const updateQuantity = async (productId, newQuantity) => {
                             className="checkout-button"
                             disabled={isProcessing}
                         >
-                            {isProcessing ? 'Apstrādā...' : 'Pabeigt pasūtījumu'}
+                            {isProcessing ? 'Apstrādā...' : 'Uz pasūtījuma apmaksu'}
                         </button>
                     </div>
                 </div>

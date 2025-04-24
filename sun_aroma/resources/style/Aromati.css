@@ -36,12 +36,19 @@ body {
 
 /* Header Styles */
 .site-header {
-    background-color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 5%;
+    background-color: var(--text-light);
+    color: var(--text-light);
     position: sticky;
     top: 0;
     z-index: 100;
-}
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+  
 
 .header-container {
     display: flex;

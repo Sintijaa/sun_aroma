@@ -24,6 +24,18 @@
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 2rem;
 }
+.site-header{
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 1rem 5%;
+background-color: var(--text-light);
+color: var(--text-light);
+position: sticky;
+top: 0;
+z-index: 100;
+box-shadow: var(--shadow);
+}
 
 .auskari-item {
     background-color: white;
